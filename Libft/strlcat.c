@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 13:59:39 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/01 15:20:14 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/01 15:21:04 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
 		dstsize--;
 	}
 	while (*src && (dstsize - 1) > 1)
-
 		*dst++ = *src++;
 	if (dstsize == 1 || *src == 0)
 		*dst = '\0';
