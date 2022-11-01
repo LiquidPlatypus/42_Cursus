@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bzero.c                                            :+:      :+:    :+:   */
+/*   memcpy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 12:24:03 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/01 12:47:14 by tbournon         ###   ########.fr       */
+/*   Created: 2022/11/01 12:39:02 by tbournon          #+#    #+#             */
+/*   Updated: 2022/11/01 12:51:19 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 {
-	unsigned char	*p;
+	unsigned int		x;
+	unsigned char		*p;
+	const unsigned char	*q;
 
-	p = s;
+	x = 0;
+	p = dst;
+	q = src;
 	while (n > 0)
 	{
-		*p = 0;
-		p++;
+		p[x] = q[x];
+		x++;
 		n--;
 	}
-	s = p;
+	dst = p;
+	src = q;
+	return (dst);
 }
