@@ -6,21 +6,11 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 13:09:01 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/01 13:58:02 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/01 14:18:43 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-
-int	ft_strlen(const char *str)
-{
-	int	x;
-
-	x = 0;
-	while (str[x] != '\0')
-		x++;
-	return (x);
-}
 
 int	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
 {
@@ -28,7 +18,12 @@ int	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
 	unsigned int	size_src;
 
 	x = 0;
-	size_src = ft_strlen(src);
+	while (src[x] != '\0')
+	{
+		size_src++;
+		x++;
+	}
+	x = 0;
 	while (src[x] != '\0' && x < dstsize)
 	{
 		dst[x] = src[x];
