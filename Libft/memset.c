@@ -1,21 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isprint.c                                          :+:      :+:    :+:   */
+/*   memset.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 15:36:32 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/01 10:17:45 by tbournon         ###   ########.fr       */
+/*   Created: 2022/11/01 12:10:47 by tbournon          #+#    #+#             */
+/*   Updated: 2022/11/01 12:16:52 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include <stdlib.h>
+// #include <stdio.h>
+
+void	*ft_memset(void *b, int c, size_t len)
 {
-	if (c >= 40 && c <= 176)
+	int				i;
+	unsigned char	*p;
+
+	i = 0;
+	p = b;
+	while (len > 0)
 	{
-		if (c % 10 == 8 || c % 10 == 9)
-			return (0);
+		*p = c;
+		p++;
+		len--;
 	}
-	return (1);
+	return (b);
 }
+
+/* int main()
+{
+	char *array = "bonjour";
+	printf("%s", array);
+
+	ft_memset(array, 'a', 3);
+	printf("%s", array);
+
+	return 0;
+} */
