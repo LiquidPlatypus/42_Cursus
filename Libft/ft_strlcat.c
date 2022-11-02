@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlcat.c                                          :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 13:59:39 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/01 15:21:04 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/02 15:09:47 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
+int	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	unsigned int	x;
 	unsigned int	y;
