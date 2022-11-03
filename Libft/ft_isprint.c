@@ -6,18 +6,11 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 15:36:32 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/03 11:16:46 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/03 13:27:28 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isprint(int c)
 {
-	if (c >= 40 && c <= 176)
-	{
-		if (c % 10 == 8 || c % 10 == 9)
-			return (0);
-		else
-			return (1);
-	}
-	return (0);
+	return (c >= 32 && c <= 126);
 }
