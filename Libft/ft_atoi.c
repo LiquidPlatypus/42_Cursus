@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 13:15:02 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/03 11:34:18 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/03 16:52:47 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	whitespaces(const char *str, int *ptnr_x)
 	compteur = 1;
 	while ((str[x] >= 9 && str[x] <= 12) || str[x] == 32)
 		x++;
-	while (str[x] && (str[x] == 43 || str[x] == 45))
+	if (str[x] && (str[x] == 43 || str[x] == 45))
 	{
 		if (str[x] == 45)
 			compteur *= -1;
