@@ -6,12 +6,11 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 13:09:01 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/03 11:48:41 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/03 14:00:59 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 #include <string.h>
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
@@ -37,16 +36,4 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	if (dstsize < size_src)
 		dst[dstsize - 1] = '\0';
 	return (size_src);
-}
-
-int main()
-{
-	char src[] = "bonjour";
-	char dst[] = "test";
-	int dstsize = 3;
-
-	printf("%lu\n", ft_strlcpy(src, dst, dstsize));
-	printf("%lu", strlcpy(src, dst, dstsize));
-
-	return 0;
 }

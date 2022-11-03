@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 12:39:02 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/03 11:27:00 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/03 13:36:34 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	x = 0;
 	p = dst;
 	q = src;
+	if (p == NULL || q == NULL)
+		return (p);
 	while (n > 0)
 	{
 		p[x] = q[x];
