@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 13:09:01 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/02 15:10:02 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/03 10:46:31 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	unsigned int	size_src;
 
 	x = 0;
+	size_src = 0;
 	while (src[x] != '\0')
 	{
 		size_src++;
