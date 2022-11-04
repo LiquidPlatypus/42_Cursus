@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 13:15:02 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/04 12:11:32 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/04 12:15:37 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_atoi(const char *str)
 			signe = -1;
 		x++;
 	}
-	while (str[x] && str[x] >= 48 && str[x] <= 57)
+	while (str[x] >= 48 && str[x] <= 57)
 	{
 		result *= 10;
 		result += str[x] - 48;
