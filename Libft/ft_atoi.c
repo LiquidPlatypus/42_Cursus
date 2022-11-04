@@ -6,9 +6,12 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 13:15:02 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/04 12:15:37 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/04 15:01:40 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
+#include <stdlib.h>
 
 int	whitespaces(const char str)
 {
