@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memcmp.c                                           :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:48:28 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/02 09:56:13 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/04 16:40:29 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,11 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	index = 0;
 	p = (unsigned char *)s1;
 	q = (unsigned char *)s2;
-	while (p[index] && p[index] == q[index] && n > 0)
+	while (index < (int)n)
 	{
+		if (p[index] != q[index])
+			return (p[index] - q[index]);
 		index++;
-		n--;
 	}
-	if (n == 0)
-		return (0);
-	return (p[index] - q[index]);
+	return (0);
 }
