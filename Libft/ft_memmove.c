@@ -6,11 +6,11 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 12:53:07 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/05 13:11:49 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/08 14:42:26 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {

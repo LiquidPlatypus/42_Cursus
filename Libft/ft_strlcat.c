@@ -6,11 +6,11 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 13:59:39 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/07 16:34:03 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/08 14:43:00 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 int	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {

@@ -6,11 +6,11 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 12:24:03 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/02 13:49:12 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/08 14:41:35 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
