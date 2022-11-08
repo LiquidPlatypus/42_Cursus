@@ -6,12 +6,11 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 13:09:01 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/03 14:00:59 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/08 11:34:58 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <string.h>
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
@@ -20,20 +19,17 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 
 	x = 0;
 	size_src = 0;
-	while (src[x] != '\0')
-	{
+	while (src[x++] != '\0')
 		size_src++;
-		x++;
-	}
-	if (size_src > dstsize)
-		return (0);
 	x = 0;
-	while (src[x] != '\0' && x < dstsize)
+	if (dstsize != 0)
 	{
-		dst[x] = src[x];
-		x++;
+		while (src[x] != '\0' && x < dstsize - 1)
+		{
+			dst[x] = src[x];
+			x++;
+		}
+		dst[x] = '\0';
 	}
-	if (dstsize < size_src)
-		dst[dstsize - 1] = '\0';
 	return (size_src);
 }
