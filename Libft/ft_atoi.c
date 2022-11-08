@@ -6,15 +6,18 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 13:15:02 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/08 14:41:27 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:31:27 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+#include <ctype.h>
 
 int	whitespaces(const char str)
 {
-	return ((str >= 8 && str <= 13) || str == 32);
+	return (str == '\t' || str == '\n' || str == '\v'
+		|| str == '\f' || str == '\r' || str == ' ');
 }
 
 int	ft_atoi(const char *str)
