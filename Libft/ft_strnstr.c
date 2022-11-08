@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:57:42 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/08 15:09:20 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:50:34 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	index2 = 0;
 	if (needle[index2] == '\0')
 		return ((char *)haystack);
+	if (len == 0 || (haystack == NULL && needle == NULL))
+		return (NULL);
 	while (haystack[index1] && index1 < len)
 	{
 		index2 = 0;
