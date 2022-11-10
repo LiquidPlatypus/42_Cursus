@@ -6,42 +6,57 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:03:34 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/10 15:26:58 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/10 16:56:30 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+// TODO : FAIRE UNE FONCTION QUI COMPTE LE NOMBRE DE SUBSTRING À FAIRE
+
+int	substring_count(char *s, char c)
+{
+	int	count;
+
+	count = 0;
+	while (*s)
+	{
+		if (*s == c)
+			count++;
+		s++;
+	}
+	return (count);
+}
+
 char	**ft_split(char const *s, char c)
 {
+	int		x;
+	int		y;
+	int		z;
+	char	*str;
 	char	**splited;
-	char	*buffer;
-	int		c_count;
-	int		index;
-	int		split_index;
 
-	c_count = 0;
-	index = 0;
-	split_index = 0;
+	x = 0;
+	y = 0;
+	z = 0;
+	str = (char *)s;
 	if (!s)
 		return (NULL);
-	while (s[index])				// ! ----------------------------------------------------------------------------
-	{																		// !
-		if (s[index] == c)													// TODO : peut-être en faire une focntion
-			c_count++;														// !
-		index++;															// !
-	}								// ! ----------------------------------------------------------------------------
-	splited = (char **)malloc(sizeof(char) * c_count);
-	index = 0;
-	while (s[index])
+	splited = (char **)malloc(sizeof(substring_count));
+	while (s[x] != '\0')
 	{
-		if (s[index] == c)
+		if (str[x] == c)
 		{
-			buffer = (char *)malloc(sizeof(char) * index);
-			ft_strlcpy(buffer, s, index);
-			ft_strlcpy(splited[split_index], buffer, index);
+			str[y] = '\0';
+			splited[z] = malloc(sizeof(str));
+			ft_strlcpy(splited[z], str, sizeof(str));
+			y = 0;
+			z++;
+			ft_memset((void *)str, 0, sizeof(s));
 		}
-		index++;
+		else
+			str[y++] = s[x];
+		x++;
 	}
 	return (splited);
 }
