@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 13:15:53 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/11 14:01:49 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/11 15:11:59 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,13 @@
 
 int	begin_trim(char const *s1, char const *set)
 {
-	int	index;
-	int	index2;
 	int	count;
 
-	index = 0;
-	index2 = 0;
 	count = 0;
-	while (s1)
+	while (*s1 && ft_strchr(set, *s1))
 	{
-		while (s1 && set)
-		{
-			if (s1[index] == set[index2])
-			{
-				while (s1[index++] == set[index2++])
-					count++;
-				index2 = 0;
-			}
-		}
+		count++;
+		s1++;
 	}
 	return (count);
 }
@@ -40,53 +29,39 @@ int	begin_trim(char const *s1, char const *set)
 int	end_trim(char const *s1, char const *set)
 {
 	int	index;
-	int	index2;
 	int	count;
 
 	index = ft_strlen(s1);
-	index2 = ft_strlen(set);
 	count = 0;
-	while (s1[index] > 0)
-	{
-		while (s1[index] > 0 && set[index2] > 0)
-		{
-			if (s1[index] == set[index2])
-			{
-				while (s1[index--] == set[index2--])
-					count++;
-				index2 = ft_strlen(set);
-			}
-		}
-	}
+	while (index-- > 0 && ft_strchr(set, s1[index - 1]))
+		count++;
 	return (count);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		index;
-	int		index2;
+	int		start;
 	int		final_len;
 	char	*trimed;
 
+	if (!s1 || !set)
+		return (NULL);
 	index = 0;
-	index2 = begin_trim(s1, set);
-	final_len = ft_strlen(s1) - (begin_trim(s1, set) - end_trim(s1, set));
-	trimed = (char *)malloc(sizeof(char) * final_len);
+	start = begin_trim(s1, set);
+	final_len = (ft_strlen(s1) + 1) - (start + end_trim(s1, set));
+	trimed = (char *)malloc(sizeof(char) * final_len + 1);
 	if (trimed == NULL)
 		return (NULL);
-	while (index++ < final_len)
-	{
-		trimed[index] = s1[index2];
-		index2++;
-	}
+	ft_strlcpy(trimed, s1 + start, final_len + 1);
 	return (trimed);
 }
 /*
 int main()
 {
-	char str[] = "strstrbonjour astru revoirstr";
+	char str[] = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ";
 
-	printf("%s", ft_strtrim(str, "str"));
+	printf("%s", ft_strtrim(str, " \n\t"));
 
 	return 0;
 }
