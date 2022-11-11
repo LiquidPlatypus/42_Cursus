@@ -6,13 +6,13 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:03:34 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/10 16:56:30 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/11 09:54:12 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// TODO : FAIRE UNE FONCTION QUI COMPTE LE NOMBRE DE SUBSTRING À FAIRE
+// ! À CORRIGER -----------------------------------------------------------
 
 int	substring_count(char *s, char c)
 {
