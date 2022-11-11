@@ -6,53 +6,65 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:54:46 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/11 11:14:21 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/11 13:02:40 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-int	digit_count(int n)
+int	digit_count(int n, int signe)
 {
-	int	count;
+	unsigned int	count;
 
 	count = 0;
-	while (n != 0)
+	if (n == 0)
+		return (1);
+	while (n > 0)
 	{
 		n /= 10;
 		count++;
 	}
+	if (signe == -1)
+		count++;
 	return (count);
+}
+
+void	convert(char *final_string, long n, unsigned int count, int signe)
+{
+	final_string[count] = 0;
+	final_string[--count] = n % 10 + '0';
+	n /= 10;
+	while (n > 0)
+	{
+		final_string[--count] = n % 10 + '0';
+		n /= 10;
+	}
+	if (signe == -1)
+		final_string[0] = '-';
 }
 
 char	*ft_itoa(int n)
 {
 	int		dgt_count;
 	int		orig_n;
+	int		signe;
 	char	*final_str;
 
-	dgt_count = digit_count(n);
-	orig_n = n;
-	final_str = (char *)malloc(sizeof(char) * dgt_count + 1);
-	while (dgt_count--)
+	signe = 1;
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	if (n < 0)
 	{
-		if (n == 0)
-			final_str[dgt_count] = '0';
-		else
-		{
-			final_str[dgt_count] = (n % 10) + 48;
-			n /= 10;
-		}
+		orig_n = n * -1;
+		signe = -1;
 	}
-	dgt_count = digit_count(orig_n);
-	final_str[dgt_count] = '\0';
+	else
+		orig_n = n;
+	dgt_count = digit_count(orig_n, signe);
+	final_str = malloc(sizeof(char) * (dgt_count + 1));
+	if (final_str == NULL)
+		return (NULL);
+	convert(final_str, orig_n, dgt_count, signe);
 	return (final_str);
-}
-
-int main()
-{
-	printf("%s", ft_itoa(0));
-
-	return (0);
 }
