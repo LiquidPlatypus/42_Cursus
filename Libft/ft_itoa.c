@@ -6,12 +6,11 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:54:46 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/11 13:02:40 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/11 14:01:12 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 int	digit_count(int n, int signe)
 {
