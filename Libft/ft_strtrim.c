@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 13:15:53 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/11 15:11:59 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/11 15:21:09 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,28 +41,24 @@ int	end_trim(char const *s1, char const *set)
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		index;
-	int		start;
+	int		index2;
 	int		final_len;
 	char	*trimed;
 
 	if (!s1 || !set)
 		return (NULL);
 	index = 0;
-	start = begin_trim(s1, set);
-	final_len = (ft_strlen(s1) + 1) - (start + end_trim(s1, set));
-	trimed = (char *)malloc(sizeof(char) * final_len + 1);
+	index2 = begin_trim(s1, set);
+	final_len = ft_strlen(s1);
+	trimed = (char *)malloc(sizeof(char) * (final_len - 1) + 1);
 	if (trimed == NULL)
 		return (NULL);
-	ft_strlcpy(trimed, s1 + start, final_len + 1);
+	while (index2 < final_len)
+	{
+		trimed[index] = s1[index2];
+		index2++;
+		index++;
+	}
+	trimed[index] = '\0';
 	return (trimed);
 }
-/*
-int main()
-{
-	char str[] = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ";
-
-	printf("%s", ft_strtrim(str, " \n\t"));
-
-	return 0;
-}
-*/
