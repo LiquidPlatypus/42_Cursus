@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 13:15:53 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/11 15:21:09 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/14 10:37:41 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	end_trim(char const *s1, char const *set)
 
 	index = ft_strlen(s1);
 	count = 0;
-	while (index-- > 0 && ft_strchr(set, s1[index - 1]))
+	while (index-- > 0 && ft_strchr(set, s1[index]))
 		count++;
 	return (count);
 }
@@ -49,8 +49,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	index = 0;
 	index2 = begin_trim(s1, set);
-	final_len = ft_strlen(s1);
-	trimed = (char *)malloc(sizeof(char) * (final_len - 1) + 1);
+	final_len = ft_strlen(s1) - end_trim(s1, set);
+	trimed = (char *)malloc(sizeof(char) * (final_len) + 1);
 	if (trimed == NULL)
 		return (NULL);
 	while (index2 < final_len)
@@ -62,3 +62,14 @@ char	*ft_strtrim(char const *s1, char const *set)
 	trimed[index] = '\0';
 	return (trimed);
 }
+
+/*
+int main()
+{
+	char s1[] = "\t   \n\n\n  \n\n\t    Hello \t  Please\n Trim me !\t\t\t\n  \t\t\t\t  ";
+
+	printf("%s", ft_strtrim(s1, " \n\t"));
+
+	return 0;
+}
+*/
