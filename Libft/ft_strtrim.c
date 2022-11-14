@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 13:15:53 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/14 10:39:13 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/14 11:08:55 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	index = 0;
 	index2 = begin_trim(s1, set);
 	final_len = ft_strlen(s1) - end_trim(s1, set);
-	trimed = (char *)malloc(sizeof(char) * (final_len) + 1);
+	trimed = (char *)malloc(sizeof(*s1) * (final_len) + 1);
 	if (trimed == NULL)
 		return (NULL);
 	while (index2 < final_len)
