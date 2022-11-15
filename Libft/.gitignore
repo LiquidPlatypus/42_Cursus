@@ -1,3 +1,5 @@
 .DS_Store
 a.out
 Libft.fr.subject.pdf
+.vscode/launch.json
+a.out.dSYM/Contents/Info.plist
