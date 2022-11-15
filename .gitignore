@@ -2,3 +2,5 @@
 libft-unit-test-master/
 a.out
 Libft/.DS_Store
+Libft/.vscode/launch.json
+Libft/a.out.dSYM/Contents/Info.plist
