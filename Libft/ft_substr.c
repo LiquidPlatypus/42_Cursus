@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:04:25 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/16 10:36:01 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/16 10:47:58 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if ((int)start < ft_strlen(s))
 	{
 		while (index < len && s[start] != '\0')
-			s2[index++] = s[start++];
+		s2[index++] = s[start++];
 	}
 	s2[index] = '\0';
 	return (s2);
