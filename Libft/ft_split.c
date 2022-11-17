@@ -6,13 +6,13 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:03:34 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/16 11:26:04 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/17 14:33:13 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	**ft_free(void **array, size_t n)
+static void	**ft_free(void **array, size_t n)
 {
 	while (n)
 		free(array[--n]);
@@ -20,7 +20,7 @@ void	**ft_free(void **array, size_t n)
 	return (0);
 }
 
-size_t	ft_substrings_count(const char *s, char c)
+static size_t	ft_substrings_count(const char *s, char c)
 {
 	size_t	len;
 	size_t	index;
@@ -38,7 +38,7 @@ size_t	ft_substrings_count(const char *s, char c)
 	return (len);
 }
 
-char	**ft_spliteur(const char *s, char c, char **res)
+static char	**ft_spliteur(const char *s, char c, char **res)
 {
 	size_t	len;
 	size_t	index;

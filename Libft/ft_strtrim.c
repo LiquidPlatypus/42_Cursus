@@ -6,14 +6,14 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 13:15:53 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/14 11:20:11 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/17 14:35:37 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-int	begin_trim(char const *s1, char const *set)
+static int	begin_trim(char const *s1, char const *set)
 {
 	int	count;
 
@@ -26,7 +26,7 @@ int	begin_trim(char const *s1, char const *set)
 	return (count);
 }
 
-int	end_trim(char const *s1, char const *set, size_t index)
+static int	end_trim(char const *s1, char const *set, size_t index)
 {
 	while (index-- > 0 && ft_strchr(set, s1[index]))
 		;

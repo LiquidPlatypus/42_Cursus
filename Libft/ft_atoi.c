@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 13:15:02 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/08 15:31:27 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/17 14:31:48 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <ctype.h>
 
-int	whitespaces(const char str)
+static int	whitespaces(const char str)
 {
 	return (str == '\t' || str == '\n' || str == '\v'
 		|| str == '\f' || str == '\r' || str == ' ');

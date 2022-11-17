@@ -6,13 +6,13 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:54:46 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/11 14:01:12 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/17 14:32:18 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	digit_count(int n, int signe)
+static int	digit_count(int n, int signe)
 {
 	unsigned int	count;
 
@@ -29,7 +29,7 @@ int	digit_count(int n, int signe)
 	return (count);
 }
 
-void	convert(char *final_string, long n, unsigned int count, int signe)
+static void	convert(char *final_string, long n, unsigned int count, int signe)
 {
 	final_string[count] = 0;
 	final_string[--count] = n % 10 + '0';
