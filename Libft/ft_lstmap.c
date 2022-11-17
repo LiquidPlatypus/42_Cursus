@@ -6,13 +6,13 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:58:04 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/17 11:58:52 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/17 12:00:28 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void), void (*del)(void))
 {
 	
 }
