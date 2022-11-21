@@ -6,11 +6,19 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 12:13:00 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/21 16:32:32 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/21 17:18:30 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+char	number_parsing(void *input, char c)
+{
+	int	returned_number;
+
+	returned_number = 0;
+	return (ft_itoa(input));
+}
 
 char	*char_parsing(void *input, char c)
 {
@@ -37,9 +45,14 @@ int	ft_printf(const char *input, ...)
 			ft_putchar_fd(*input, 1);
 			input++;
 		}
-		if (*input == 'c' || input == 's')
+		if (*input == 'c' || *input == 's')
 		{
-			char_parsing(va_arg(param, char *), *input);
+			char_parsing(va_arg(params, char *), *input);
+			input++;
+		}
+		if (*input == 'd' || *input == 'i')
+		{
+			number_parsing(va_arg(params, int), *input);
 			input++;
 		}
 	}
