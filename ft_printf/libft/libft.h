@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:07:30 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/21 14:20:51 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/21 14:29:30 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdarg.h>
 
 typedef struct s_list
 {
