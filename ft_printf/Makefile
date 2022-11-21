@@ -34,7 +34,7 @@ SRCS	= 	libft/ft_atoi.c\
 			libft/ft_strtrim.c\
 			libft/ft_substr.c\
 			libft/ft_tolower.c\
-			libft/ft_toupper.c
+			libft/ft_toupper.c\
 			libft/ft_lstadd_back.c\
 			libft/ft_lstadd_front.c\
 			libft/ft_lstclear.c\
