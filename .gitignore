@@ -4,3 +4,5 @@ a.out
 Libft/.DS_Store
 Libft/.vscode/launch.json
 Libft/a.out.dSYM/Contents/Info.plist
+ft_printf/a.out.dSYM/Contents/Info.plist
+ft_printf/.vscode/launch.json
