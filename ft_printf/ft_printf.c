@@ -6,33 +6,46 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 12:13:00 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/21 14:05:48 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/21 16:10:40 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdarg.h>
+#include "ft_printf.h"
+
+char	*char_parsing(void *input, char c)
+{
+	char	*returned_string;
+	char	returned_char;
+
+	if (c == 'c')
+		return (returned_char = input);
+	else
+		return (returned_string = &input);
+}
 
 int	ft_printf(const char *input, ...)
 {
 	va_list		params;
 	int			x;
-	char		*s;
-	const char	*cur_arg;
+	// char		*s;
 
-	cur_arg = input;
 	if (input == NULL)
 		return (0);
 	va_start(params, input);
-	while (*cur_arg++ != '\0')
+	while (*input != '\0')
 	{
-		while (*cur_arg++ != '%')
-			ft_putchar_fd(*cur_arg, 1);
-	/*	if (*cur_arg == 'c')
+		while (*input != '%')
+		{
+			ft_putchar_fd(*input, 1);
+			input++;
+		}
+		if (*input == 'c' || input == 's')
+			char_parsing(va_arg(param, ), *input);
+	/*	if (*input == 'c')
 		{
 			x = va_arg(params, int);
 			ft_putchar_fd(x, 1);
-	break ;
+			break ;
 		} */
 	/* 	else if (*cur_arg == 's')
 		{
@@ -96,7 +109,8 @@ int	ft_printf(const char *input, ...)
 
 int main()
 {
-	ft_printf("bonjour\n");
+	char c = 'c';
+	ft_printf("bonjour %c\n", c);
 
 	return 0;
 }
