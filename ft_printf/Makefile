@@ -3,6 +3,7 @@ LIBFT = ./libft/libft.a
 NAME	= libftprintf.a
 
 SRCS	= 	ft_printf.c\
+			ft_whitespace.c\
 					
 OBJS 	= ${SRCS:.c=.o}
 
