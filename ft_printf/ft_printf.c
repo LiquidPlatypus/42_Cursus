@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 12:13:00 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/22 11:31:11 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/22 15:56:10 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,26 @@ int	ft_printf(const char *input, ...)
 	{
 		while (*input != '%')
 		{
+			if (*input == '\0')
+				return (0);
 			ft_putchar_fd(*input, 1);
 			input++;
 		}
+		input++;
 		/*	if (*input == 'c' || *input == 's')
 			{
 				char_parsing(va_arg(params, char *), *input);
 				input++;
 			} */
-		input++;
 		if (*input++ == 'd' || *input++ == 'i')
 			ft_putstr_fd(number_parsing(va_arg(params, int)), 1);
 	}
 	va_end(params);
 	return (0);
 }
-/*
+
 int	main(void)
 {
 	ft_printf("bonjour %d\n", 18);
 	return (0);
 }
-*/
