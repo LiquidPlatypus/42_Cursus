@@ -6,3 +6,4 @@ libft/.DS_Store
 .vscode/launch.json
 a.out.dSYM/Contents/Info.plist
 a.out.dSYM/Contents/Resources/DWARF/a.out
+.vscode/settings.json
