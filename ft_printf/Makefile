@@ -3,8 +3,7 @@ LIBFT = ./libft/libft.a
 NAME	= libftprintf.a
 
 SRCS	= 	ft_printf.c\
-					libft/ft_putchar_fd.c\
-
+					
 OBJS 	= ${SRCS:.c=.o}
 
 CC		= gcc
