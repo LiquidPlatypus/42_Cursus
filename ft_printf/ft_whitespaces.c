@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_whitespace.c                                    :+:      :+:    :+:   */
+/*   ft_whitespaces.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:39:56 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/22 11:40:13 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/22 11:48:18 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	whitespaces(const char str)
+int	ft_whitespaces(const char str)
 {
 	return (str == '\t' || str == '\n' || str == '\v'
 		|| str == '\f' || str == '\r' || str == ' ');
