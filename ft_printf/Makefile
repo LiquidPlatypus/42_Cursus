@@ -2,10 +2,11 @@ LIBFT = ./libft/libft.a
 
 NAME	= libftprintf.a
 
-SRCS	= 	sources/ft_isformat.c\
+SRCS	= 	sources/ft_len.c\
 			sources/ft_printchar.c\
 			sources/ft_printf.c\
-			sources/ft_printstr.c\
+			sources/ft_putchar.c\
+			sources/ft_which_format.c\
 
 OBJS 	= ${SRCS:.c=.o}
 

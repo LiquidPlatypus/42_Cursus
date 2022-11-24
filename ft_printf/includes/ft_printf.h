@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:28:33 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/24 14:19:38 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/24 14:32:37 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		is_format(int c);
 void	ft_printchar(char c, t_print *tab);
 int		ft_printf(const char *input, ...);
 int		ft_printstr(char *c);
-void	ft_putchar_fd(char c, int fd);
+void	ft_putchar(char c);
 char	*ft_itoa(int n);
 
 #endif
