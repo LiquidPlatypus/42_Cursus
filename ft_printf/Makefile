@@ -8,6 +8,7 @@ SRCS	= 	sources/ft_len.c\
 			sources/ft_printint.c\
 			sources/ft_printptr.c\
 			sources/ft_printstr.c\
+			ft_printuint.c\
 			sources/ft_which_format.c\
 
 OBJS 	= ${SRCS:.c=.o}
