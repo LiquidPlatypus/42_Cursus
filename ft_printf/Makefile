@@ -2,7 +2,8 @@ LIBFT = ./libft/libft.a
 
 NAME	= libftprintf.a
 
-SRCS	= 	ft_printchar.c\
+SRCS	= 	ft_isformat.c\
+			ft_printchar.c\
 			ft_printf.c\
 			ft_printstr.c\
 					

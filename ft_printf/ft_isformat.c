@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_isformat.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 14:28:33 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/24 10:50:37 by tbournon         ###   ########.fr       */
+/*   Created: 2022/11/24 10:40:42 by tbournon          #+#    #+#             */
+/*   Updated: 2022/11/24 10:49:57 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-
-# include "libft/libft.h"
-# include <stdarg.h>
-
-int		is_format(int c);
-int		ft_printchar(char c);
-int		ft_printf(const char *input, ...);
-int		ft_printstr(char *c);
-void	ft_putchar_fd(char c, int fd);
-char	*ft_itoa(int n);
-
-#endif
+int	ft_isformat(int c)
+{
+	if (c == 'c' || c == 's' || c == 'p')
+		return (1);
+	else if (c == 'd' || c == 'i' || c == 'u')
+		return (1);
+	else if (c == 'x' || c == 'X' || c == '%')
+		return (1);
+	return (0);
+}
