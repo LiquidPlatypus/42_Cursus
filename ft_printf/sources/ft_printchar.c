@@ -6,13 +6,13 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:07:28 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/24 14:31:54 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/24 14:38:03 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 
-void	ft_printchar(char c, t_print *tab)
+int	ft_printchar(char c, t_print *tab)
 {
 	int	count;
 
