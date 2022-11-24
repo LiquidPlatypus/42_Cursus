@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:05:52 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/24 15:13:38 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/24 17:05:57 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static int	ft_minus(char *str, t_print *tab)
 	}
 	else
 		count += ft_putstr(str, ft_strlen(str));
+	return (count);
 }
 
 int	ft_printstr(char *str, t_print *tab)
