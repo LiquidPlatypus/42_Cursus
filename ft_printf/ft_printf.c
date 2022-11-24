@@ -6,13 +6,15 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 12:13:00 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/24 14:19:59 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/24 17:39:15 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 
-t_print	*ft_initializer(t_print *tab)
+// ! QUASI TOUT À CHANGER LOL
+
+static t_print	*ft_initializer(t_print *tab)
 {
 	tab->width = 0;
 	tab->precision = 0;
@@ -27,7 +29,7 @@ t_print	*ft_initializer(t_print *tab)
 	return (tab);
 }
 
-int	ft_which_format(t_print *tab, const char *input, int x)
+static int	ft_which_format(t_print *tab, const char *input, int x)
 {
 	while (ft_isformat(input[x]) != 1)
 	{
@@ -39,10 +41,7 @@ int	ft_which_format(t_print *tab, const char *input, int x)
 			tab->is_zero = 1;
 		x++;
 	}
-	if (input[x] == 'c')
-		ft_printchar(va_arg(params, int), tab);
-	if (input[x] == 's')
-		ft_printstr(tab);
+
 }
 
 int	ft_printf(const char *input, ...)
