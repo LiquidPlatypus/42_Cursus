@@ -6,21 +6,42 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:05:52 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/24 11:43:39 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/24 15:13:38 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
+#include "../includes/ft_printf.h"
 
-int	ft_printstr(char *s)
+static int	ft_minus(char *str, t_print *tab)
 {
-	int	len;
+	int	count;
 
-	len = 0;
-	if (s)
+	count = 0;
+	if (tab->point >= 0)
 	{
-		write(1, s, ft_strlen(s));
-		return (len = ft_strlen(s));
+		count += ft_len(tab->point, ft_strlen(str), 0);
+		count += ft_putstr(str, tab->point);
 	}
+	else
+		count += ft_putstr(str, ft_strlen(str));
+}
+
+int	ft_printstr(char *str, t_print *tab)
+{
+	int	count;
+
+	count = 0;
+	if (!str)
+		str = "(null)";
+	if (tab->point >= 0 && (size_t)tab->point > ft_strlen(str))
+		tab->point = ft_strlen(str);
+	if (tab->sign == 1)
+		count += ft_minus(str, tab);
+	if (tab->point >= 0)
+		count += ft_len(str, tab);
+	else
+		count += ft_len(tab->total_len, ft_strlen(str), 0);
+	if (tab->sign == 0)
+		count += ft_minus(str, tab);
 	return (0);
 }
