@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 12:13:00 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/24 13:12:16 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/24 14:19:59 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_which_format(t_print *tab, const char *input, int x)
 		x++;
 	}
 	if (input[x] == 'c')
-		ft_printchar(tab);
+		ft_printchar(va_arg(params, int), tab);
 	if (input[x] == 's')
 		ft_printstr(tab);
 }

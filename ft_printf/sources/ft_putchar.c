@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isformat.c                                      :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/24 10:40:42 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/24 10:49:57 by tbournon         ###   ########.fr       */
+/*   Created: 2022/11/10 17:06:29 by tbournon          #+#    #+#             */
+/*   Updated: 2022/11/24 14:27:20 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isformat(int c)
+#include "../includes/ft_printf.h"
+
+void	ft_putchar(char c)
 {
-	if (c == 'c' || c == 's' || c == 'p')
-		return (1);
-	else if (c == 'd' || c == 'i' || c == 'u')
-		return (1);
-	else if (c == 'x' || c == 'X' || c == '%')
-		return (1);
-	return (0);
+	write(1, &c, 1);
 }

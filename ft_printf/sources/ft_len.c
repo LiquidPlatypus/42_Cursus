@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printchar.c                                     :+:      :+:    :+:   */
+/*   ft_len.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 17:07:28 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/24 14:31:54 by tbournon         ###   ########.fr       */
+/*   Created: 2022/11/24 14:28:22 by tbournon          #+#    #+#             */
+/*   Updated: 2022/11/24 14:30:48 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
+#include "../includes/ft_printf.h"
 
-void	ft_printchar(char c, t_print *tab)
+int	ft_len(int len, int sign, int is_zero)
 {
 	int	count;
 
 	count = 0;
-	if (tab->sign == 1)
-		ft_putchar(c);
-	count = ft_len(tab->total_len, 1, 0);
-	if (tab->sign == 0)
-		ft_putchar(c);
-	return (count + 1);
+	while (len - sign > 0)
+	{
+		if (is_zero)
+			ft_putchar('0');
+		else
+			ft_putchar(' ');
+		len--;
+		count++;
+	}
+	return (count);
 }
