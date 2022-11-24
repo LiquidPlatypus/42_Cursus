@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:28:33 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/24 14:38:21 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/24 15:07:34 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ typedef struct s_print
 int		is_format(int c);
 int		ft_printchar(char c, t_print *tab);
 int		ft_printf(const char *input, ...);
-int		ft_printstr(char *c);
+int		ft_printstr(char *str, t_print *tab);
 void	ft_putchar(char c);
+int		ft_putstr(char *str, int point);
 char	*ft_itoa(int n);
+int		ft_strlen(const char *str);
 
 #endif
