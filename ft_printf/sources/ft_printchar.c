@@ -6,14 +6,16 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:07:28 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/23 17:14:09 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/24 11:43:51 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "includes/ft_printf.h"
 
-int	ft_printchar(char c)
+void	ft_printchar(t_print *tab)
 {
-	write(1, &c, 1);
-	return (1);
+	char	c;
+
+	c = va_arg(tab->params, int);
+	
 }
