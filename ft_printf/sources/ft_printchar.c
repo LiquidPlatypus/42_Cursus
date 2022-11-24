@@ -6,11 +6,11 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:07:28 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/24 14:38:03 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/24 14:49:48 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int	ft_printchar(char c, t_print *tab)
 {
