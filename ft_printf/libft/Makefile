@@ -45,6 +45,7 @@ SRCS 	= 	ft_atoi.c\
 			ft_lstmap.c\
 			ft_lstnew.c\
 			ft_lstsize.c\
+			ft_uitoa.c\
 
 OBJS 	= ${SRCS:.c=.o}
 
