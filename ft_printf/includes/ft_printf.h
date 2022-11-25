@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:28:33 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/25 09:20:12 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/25 09:33:01 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ int		ft_printuint(unsigned int x, t_print *tab);
 void	ft_putchar(char c);
 int		ft_putstr(char *str, int point);
 char	*ft_itoa(int n);
+
+t_print	*ft_sign(t_print *tab);
+t_print	*ft_total_len(va_list params, t_print *tab);
+int	ft_point(const char *str, int start,
+			t_print *tab, va_list params);
+
 int		ft_strlen(const char *str);
 int		ft_type(int c);
 char	*ft_uitoa(unsigned int n);
