@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:28:33 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/25 09:16:46 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/25 09:18:12 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_print
 	int		space;
 }	t_print;
 
+int		ft_flags(int c);
 int		ft_isdigit(int c);
 int		ft_printchar(char c, t_print *tab);
 int		ft_printf(const char *input, ...);
