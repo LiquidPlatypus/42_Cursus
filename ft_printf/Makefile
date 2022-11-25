@@ -2,17 +2,7 @@ LIBFT = ./libft/libft.a
 
 NAME	= libftprintf.a
 
-SRCS	= 	sources/ft_len.c\
-			sources/ft_printchar.c\
-			sources/ft_printflags.c\
-			sources/ft_printhexa.c\
-			ft_printf.c\
-			sources/ft_printint.c\
-			sources/ft_printpercent.c\
-			sources/ft_printptr.c\
-			sources/ft_printstr.c\
-			sources/ft_printuint.c\
-			sources/ft_which_format.c\
+SRCS	= 	ft_printf.c\
 
 OBJS 	= ${SRCS:.c=.o}
 
