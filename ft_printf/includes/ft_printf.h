@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:28:33 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/25 11:25:29 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/25 11:47:51 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,8 @@
 
 typedef struct s_print
 {
-	int		width;
-	int		zero;
-	int		point;
-	int		dash;
-	int		plus;
-	int		minus;
-	int		percent;
-	int		space;
-	char	type;
+	int	width;
+	int	total_len;
 }	t_print;
 
 
