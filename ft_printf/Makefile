@@ -6,7 +6,7 @@ SRCS	= 	sources/ft_len.c\
 			sources/ft_printchar.c\
 			sources/ft_printflags.c\
 			sources/ft_printhexa.c\
-			sources/ft_printf.c\
+			ft_printf.c\
 			sources/ft_printint.c\
 			sources/ft_printpercent.c\
 			sources/ft_printptr.c\

@@ -1,46 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printptr.c                                      :+:      :+:    :+:   */
+/*   ft_printhexa.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/24 16:57:21 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/25 10:12:55 by tbournon         ###   ########.fr       */
+/*   Created: 2022/11/25 09:05:55 by tbournon          #+#    #+#             */
+/*   Updated: 2022/11/25 10:08:00 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-
-// ! À FINIR -----------
 /*
-static int	ft_minus(char *ptr, t_print tab)
+static int	ft_minus(char *hexa, t_print tab)
 {
 	int	count;
 
 	count = 0;
-	count += ft_putstr("0x", 2);
 	if (tab.point >= 0)
-	{
-		count += ft_len(tab.point, ft_strlen(ptr), 1);
-		count += ft_putstr(ptr, tab.point);
-	}
-	else
-		count += ft_putstr(ptr, ft_strlen(ptr));
+		count += ft_len(tab.point - 1, ft_strlen(hexa) - 1, 1);
+	count += ft_putstr(hexa, ft_strlen(hexa));
 	return (count);
 }
 
-int	ft_printptr(unsigned long long x, t_print tab)
-{
-	int		count;
-	char	*ptr;
-
-	count = 0;
-	if (x == 0 && tab.point == 0)
-	{
-		count += ft_putstr("0x", 2);
-		return (count += ft_len(tab.total_len, 0, 1));
-	}
-	ptr = 
-}
 */

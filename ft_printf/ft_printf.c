@@ -6,79 +6,96 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 12:13:00 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/24 17:39:15 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/25 10:16:21 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 
-// ! QUASI TOUT À CHANGER LOL
-
-static t_print	*ft_initializer(t_print *tab)
+static t_print	ft_initializer(void)
 {
-	tab->width = 0;
-	tab->precision = 0;
-	tab->zero_padding = 0;
-	tab->point = 0;
-	tab->sign = 0;
-	tab->total_len = 0;
-	tab->is_zero = 0;
-	tab->dash = 0;
-	tab->percent = 0;
-	tab->space = 0;
+	t_print	tab;
+
+	tab.width = 0;
+	tab.precision = 0;
+	tab.zero_padding = 0;
+	tab.point = 0;
+	tab.sign = 0;
+	tab.total_len = 0;
+	tab.is_zero = 0;
+	tab.dash = 0;
+	tab.percent = 0;
+	tab.space = 0;
 	return (tab);
 }
 
-static int	ft_which_format(t_print *tab, const char *input, int x)
+static int	ft_flags_pars(const char *str, int x, t_print tab)
 {
-	while (ft_isformat(input[x]) != 1)
+	while (str[x])
 	{
-		if (input[x] == '.')
-			tab->point = 1;
-		if (input[x] == '-')
-			tab->dash = 1;
-		if (input[x] == '0')
-			tab->is_zero = 1;
+		if (!ft_isdigit(str[x]) && !ft_type(str[x]) && !ft_flags(str[x]))
+			break ;
+		if (str[x] == '0' && tab.total_len == 0 && tab.sign == 0)
+			tab.is_zero = 1;
+		if (str[x] == '.')
+			x = ft_point(str, x, tab);
+		if (str[x] == '-')
+			tab = ft_sign(tab);
 		x++;
 	}
+	return (x);
+}
 
+static int	ft_treatment(const char *str, va_list params)
+{
+	int		x;
+	int		count;
+	t_print	tab;
+
+	x = 0;
+	count = 0;
+	while (1)
+	{
+		tab = ft_initializer();
+		if (!str)
+			break ;
+		else if (str[x] == '%' && str[x + 1])
+		{
+			x = ft_flags_pars(str, ++x, tab);
+			if (ft_type(str[x]))
+				count += ft_choose(str[x], tab, params);
+			else if (str[x])
+				count += ft_printchar(str[x], tab);
+		}
+		else if (str[x] != '%')
+			count += ft_printchar(str[x], tab);
+		x++;
+	}
+	return (count);
 }
 
 int	ft_printf(const char *input, ...)
 {
-	va_list	params;
-	int		x;
-	size_t	count;
-	t_print	*tab;
+	va_list		params;
+	size_t		count;
+	const char	*str;
 
-	tab = (t_print *)malloc(sizeof(t_print));
-	if (!tab)
-		return (-1);
-	ft_initializer(tab->params);
-	va_start(tab->params, input);
-	x = -1;
 	count = 0;
-	while (input[++x])
-	{
-		if (input[x] == '%')
-			x = ft_which_format(tab, input, x + 1);
-		else
-			count += write(1, &input[x], 1);
-	}
+	str = ft_strdup(input);
+	va_start(params, input);
+	count = ft_treatment(str, params);
 	va_end(params);
-	count += tab->total_len;
-	free (tab);
+	free((char *)str);
 	return (count);
 }
-/*
+
 int	main(void)
 {
 	int	x;
 
 	x = ft_printf("%cs%cs%c", 'c', 'b', 'a');
 	ft_putnbr_fd(x, 1);
-	ft_printchar('\n');
+	ft_putchar('\n');
 	ft_printf("%s", (char *) NULL);
 	return (0);
 }
-*/
