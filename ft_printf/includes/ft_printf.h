@@ -23,6 +23,10 @@ typedef struct s_print
 	int	total_len;
 }	t_print;
 
+// ft_char.c
+
+int			ft_char(int c);
+
 // ft_params_search.c
 
 const char	*ft_params_search(va_list params, const char *input, t_print *tab);

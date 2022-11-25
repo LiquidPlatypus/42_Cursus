@@ -18,4 +18,5 @@ const char	*ft_params_search(va_list params, const char *input, t_print *tab)
 
 	count = 0;
 	if (*input == 'c')
+		count += ft_char(va_arg(params, int));
 }

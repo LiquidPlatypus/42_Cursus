@@ -21,7 +21,7 @@ char	*ft_strprcchr(const char *input)
 		input++;
 	}
 	if (!input)
-		return ((char *)s);
+		return ((char *)input);
 	return (NULL);
 }
 
