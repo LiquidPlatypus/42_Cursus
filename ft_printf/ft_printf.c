@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 12:13:00 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/25 11:21:39 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/25 11:37:37 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_printf(const char *input, ...)
 {
 	va_list		params;
-	size_t		count;
+	int		count;
 
 	if (!input)
 		return (0);
