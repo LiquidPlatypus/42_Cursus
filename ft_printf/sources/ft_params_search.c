@@ -21,4 +21,15 @@ const char	*ft_params_search(va_list params, const char *input, t_print *tab)
 		count += ft_char(va_arg(params, int));
 	if (*input == 's')
 		count += ft_string(va_arg(params, char *));
+	if (*input == 'p')
+		count += ft_pointer(va_arg(params, void *));
+	if (*input == 'd' || *input == 'i')
+		count += ft_int(va_arg(params, int));
+	if (*input == 'u')
+		count += ft_uint(va_arg(params, unsigned int));
+	if (*input == 'x' || *input == 'X')
+		count += ft_hexa(va_arg(params, int));
+	if (*input == '%')
+		count += ft_percent(va_arg(params, char));
+	return (input);
 }
