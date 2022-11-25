@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 13:47:38 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/25 13:48:46 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/25 14:06:32 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,8 @@
 
 const char	*ft_params_search(va_list params, const char *input, t_print *tab)
 {
+	int	count;
 
+	count = 0;
+	if (*input == 'c')
 }
