@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 12:13:00 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/25 13:42:06 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/25 14:02:16 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ char	*ft_strprcchr(const char *input)
 	while (*input)
 	{
 		if (*input == '%')
-			return ((char *)s);
-		s++;
+			return ((char *)input);
+		input++;
 	}
-	if (!s)
+	if (!input)
 		return ((char *)s);
 	return (NULL);
 }
