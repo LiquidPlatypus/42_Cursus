@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:28:33 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/25 13:49:03 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/25 14:03:31 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 
 # include "../libft/libft.h"
+# include <stdlib.h>
 # include <stdarg.h>
 
 typedef struct s_print
