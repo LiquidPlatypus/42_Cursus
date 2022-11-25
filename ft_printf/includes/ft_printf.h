@@ -31,4 +31,8 @@ int			ft_char(int c);
 
 const char	*ft_params_search(va_list params, const char *input, t_print *tab);
 
+// ft_string.c
+
+int			ft_string(char *input);
+
 #endif
