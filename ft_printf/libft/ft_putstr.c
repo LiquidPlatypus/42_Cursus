@@ -12,12 +12,12 @@
 
 #include "../includes/ft_printf.h"
 
-int	ft_putstr(char *str, int point)
+int	ft_putstr(char *str)
 {
 	int	count;
 
 	count = 0;
-	while (str[count] && count < point)
+	while (str[count])
 		ft_putchar(str[count++]);
 	return (count);
 }

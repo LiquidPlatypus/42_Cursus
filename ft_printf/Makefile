@@ -5,6 +5,7 @@ NAME	= libftprintf.a
 SRCS	= 	ft_printf.c\
 			sources/ft_char.c\
 			sources/ft_hexa.c\
+			sources/ft_iitoa.c\
 			sources/ft_int.c\
 			sources/ft_params_search.c\
 			sources/ft_percent.c\

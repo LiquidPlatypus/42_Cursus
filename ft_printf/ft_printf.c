@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
+#include <stdio.h>			// ! A ENLEVER
 
 char	*ft_strprcchr(const char *input)
 {
@@ -54,7 +55,7 @@ int	ft_printf(const char *input, ...)
 	while (*input)
 	{
 		if (*input == '%')
-			input = ft_params_search(params, input + 1, &tab);
+			input = ft_params_search(params, input + 1);
 		else
 			input = ft_text_reader(&tab, input);
 		if (!input)
@@ -66,4 +67,18 @@ int	ft_printf(const char *input, ...)
 	}
 	va_end(params);
 	return (tab.total_len);
+}
+
+int main()
+{
+	ft_printf("bonjour, %d\n", 18);
+	printf("bonjour, %d\n", 18);
+
+	int x = ft_printf("bonjour, %d\n", 18);
+	int y = printf("bonjour, %d\n", 18);
+
+	printf("%d\n", x);
+	printf("%d\n", y);
+
+	return 0;
 }

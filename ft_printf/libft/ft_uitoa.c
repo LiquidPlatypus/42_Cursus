@@ -39,7 +39,7 @@ static void	convert(char *final_string, long n, unsigned int count)
 	}
 }
 
-unsigned int	*ft_uitoa(unsigned int n)
+unsigned int	ft_uitoa(unsigned int n)
 {
 	int		dgt_count;
 	int		orig_n;
@@ -49,7 +49,7 @@ unsigned int	*ft_uitoa(unsigned int n)
 	dgt_count = digit_count(orig_n);
 	final_str = malloc(sizeof(char) * (dgt_count + 1));
 	if (final_str == NULL)
-		return (NULL);
+		return (0);
 	convert(final_str, orig_n, dgt_count);
 	write(1, final_str, dgt_count);
 	return (dgt_count);

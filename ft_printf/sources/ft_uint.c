@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#includes "../includes/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 unsigned int	ft_uint(unsigned int nbr)
 {
