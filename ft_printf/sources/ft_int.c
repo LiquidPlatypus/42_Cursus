@@ -16,5 +16,5 @@ int	ft_int(int nbr)
 {
 	int	count;
 
-	return (count = ft_itao(nbr));
+	return (count = ft_itoa(nbr));
 }
