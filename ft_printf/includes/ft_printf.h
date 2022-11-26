@@ -27,6 +27,10 @@ typedef struct s_print
 
 int			ft_char(int c);
 
+// ft_iitoa.c
+
+int			ft_iitoa(int n);
+
 // ft_params_search.c
 
 const char	*ft_params_search(va_list params, const char *input, t_print *tab);
