@@ -17,5 +17,5 @@ int	ft_string(char *input)
 	int	count;
 
 	count = ft_putstr(input);
-	retunr (count);
+	return (count);
 }
