@@ -25,7 +25,7 @@ char	*ft_strprcchr(const char *input)
 	return (NULL);
 }
 
-const char	ft_text_reader(t_print *tab, const char *input)
+const char	*ft_text_reader(t_print *tab, const char *input)
 {
 	char	*suiv;
 
