@@ -56,7 +56,7 @@ int	ft_printf(const char *input, ...)
 		if (*input == '%')
 			input = ft_params_search(params, input + 1, &tab);
 		else
-			input - ft_text_reader(&tab, input);
+			input = ft_text_reader(&tab, input);
 		if (!input)
 		{
 			write(1, "(null)", 6);
