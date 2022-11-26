@@ -39,7 +39,7 @@ static void	convert(char *final_string, long n, unsigned int count)
 	}
 }
 
-char	*ft_uitoa(unsigned int n)
+unsigned int	*ft_uitoa(unsigned int n)
 {
 	int		dgt_count;
 	int		orig_n;
@@ -51,5 +51,6 @@ char	*ft_uitoa(unsigned int n)
 	if (final_str == NULL)
 		return (NULL);
 	convert(final_str, orig_n, dgt_count);
-	return (final_str);
+	write(1, final_str, dgt_count);
+	return (dgt_count);
 }

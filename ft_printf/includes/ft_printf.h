@@ -25,18 +25,23 @@ typedef struct s_print
 
 // ft_char.c
 
-int			ft_char(int c);
+int				ft_char(int c);
 
 // ft_iitoa.c
 
-int			ft_iitoa(int n);
+int				ft_iitoa(int n);
 
 // ft_params_search.c
 
-const char	*ft_params_search(va_list params, const char *input, t_print *tab);
+const char		*ft_params_search(va_list params,
+					const char *input, t_print *tab);
 
 // ft_string.c
 
-int			ft_string(char *input);
+int				ft_string(char *input);
+
+// ft_uint.c
+
+unsigned int	ft_uint(unsigned int nbr);
 
 #endif
