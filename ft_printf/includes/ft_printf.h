@@ -31,6 +31,10 @@ int				ft_char(int c);
 
 int				ft_iitoa(int n);
 
+// ft_int.c
+
+void	ft_percent(char c);
+
 // ft_params_search.c
 
 const char		*ft_params_search(va_list params,
