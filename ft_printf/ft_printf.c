@@ -71,9 +71,6 @@ int	ft_printf(const char *input, ...)
 
 int main()
 {
-	ft_printf("bonjour, %d\n", 18);
-	printf("bonjour, %d\n", 18);
-
 	int x = ft_printf("bonjour, %d\n", 18);
 	int y = printf("bonjour, %d\n", 18);
 
