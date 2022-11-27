@@ -52,7 +52,7 @@ int	ft_iitoa(int n)
 
 	signe = 1;
 	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
+		return (-2147483648);
 	if (n < 0)
 	{
 		orig_n = n * -1;
@@ -63,7 +63,7 @@ int	ft_iitoa(int n)
 	dgt_count = digit_count(orig_n, signe);
 	final_str = malloc(sizeof(char) * (dgt_count + 1));
 	if (final_str == NULL)
-		return (NULL);
+		return (0);
 	convert(final_str, orig_n, dgt_count, signe);
 	write(1, final_str, dgt_count);
 	return (dgt_count);
