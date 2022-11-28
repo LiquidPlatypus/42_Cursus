@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:54:46 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/24 17:23:22 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/28 16:37:00 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ unsigned int	ft_uitoa(unsigned int n)
 		return (0);
 	convert(final_str, orig_n, dgt_count);
 	write(1, final_str, dgt_count);
+	free(final_str);
 	return (dgt_count);
 }
