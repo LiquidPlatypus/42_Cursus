@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 12:13:00 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/25 14:02:16 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/28 11:44:35 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,10 @@ int	ft_printf(const char *input, ...)
 	while (*input)
 	{
 		if (*input == '%')
-			input = ft_params_search(params, input + 1);
+		{
+			input = ft_params_search(params, input + 1, tab);
+			input++;
+		}
 		else
 			input = ft_text_reader(&tab, input);
 		if (!input)
@@ -69,13 +72,15 @@ int	ft_printf(const char *input, ...)
 	return (tab.total_len);
 }
 
-int main()
+int	main(void)
 {
-	int x = ft_printf("bonjour, %d\n", 18);
-	int y = printf("bonjour, %d\n", 18);
+	int	x;
+	int	y;
 
-	printf("%d\n", x);
+	x = ft_printf("%s%s%s", "And ", "some", "joined");
+	y = printf("%s%s%s", "And ", "some", "joined");
+	ft_putchar('\n');
+	printf("\n%d\n", x);
 	printf("%d\n", y);
-
-	return 0;
+	return (0);
 }
