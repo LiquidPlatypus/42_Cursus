@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 12:13:00 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/28 13:25:24 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/28 16:16:36 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ const char	*ft_text_reader(t_print *tab, const char *input)
 {
 	char	*suiv;
 
+	tab->width = 0;
+	tab->total_len = 0;
 	suiv = ft_strprcchr(input);
 	if (suiv)
 		tab->width = suiv - input;
@@ -42,43 +44,54 @@ const char	*ft_text_reader(t_print *tab, const char *input)
 	return (input);
 }
 
+int	ft_input_len(const char *input)
+{
+	int	index;
+
+	index = 0;
+	while (input[index] != '%' && input[index])
+		index++;
+	return (index);
+}
+
 int	ft_printf(const char *input, ...)
 {
 	va_list	params;
 	t_print	tab;
-	const char	*str;
-	int x;
+	int		final_len;
 
-	str = input;
 	if (!input)
 		return (0);
 	va_start(params, input);
-	tab.width = 0;
-	tab.total_len = 0;
-	x = 0;
+	final_len = 0;
 	while (*input)
 	{
 		if (*input == '%')
-			x = ft_params_search(params, ++input);
-		input++;
-//		else
-//			input = ft_text_reader(&tab, input);
+		{
+			final_len += ft_params_search(params, ++input);
+			input++;
+		}
+		else
+		{
+			final_len += ft_input_len(input);
+			input = ft_text_reader(&tab, input);
+		}
 	}
 	va_end(params);
-	puts("");
-	printf("%s || %d\n", str, x);
-	return (x);
+	return (final_len);
 }
-
+/*
 int	main(void)
 {
-	int	x = ft_printf("%d", 42);
+	int	x = ft_printf("%%c");
 	puts("");
-	int	y = printf("%d", 42);
+	int	y = printf("%%c");
 	puts("");
+
 
 	printf("%d\n", x);
 	printf("%d\n", y);
 
 	return (0);
 }
+*/
