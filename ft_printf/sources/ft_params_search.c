@@ -6,30 +6,27 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 13:47:38 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/28 11:12:24 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/28 13:27:11 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-const char	*ft_params_search(va_list params, const char *input, t_print tab)
+int	ft_params_search(va_list params, const char *input)
 {
-	int	count;
-
-	count = 0;
 	if (*input == 'c')
-		count += ft_char(va_arg(params, int), tab);
+		return (ft_char(va_arg(params, int)));
 	if (*input == 's')
-		count += ft_string(va_arg(params, char *), tab);
+		return (ft_string(va_arg(params, char *)));
 /*	if (*input == 'p')
-		count += ft_pointer(va_arg(params, void *), tab); */
+		return (ft_pointer(va_arg(params, void *), tab)); */
 	if (*input == 'd' || *input == 'i')
-		count += ft_int(va_arg(params, int), tab);
+		return (ft_int(va_arg(params, int)));
 	if (*input == 'u')
-		count += ft_uint(va_arg(params, unsigned int), tab);
+		return (ft_uint(va_arg(params, unsigned int)));
 /*	if (*input == 'x' || *input == 'X')
-		count += ft_hexa(va_arg(params, int), tab); */
+		return (ft_hexa(va_arg(params, int), tab)); */
 	if (*input == '%')
-		count += ft_percent(tab);
-	return (input);
+		return (ft_percent());
+	return (-1);
 }

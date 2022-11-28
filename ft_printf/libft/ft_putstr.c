@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 15:07:16 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/24 17:16:35 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/28 12:27:16 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,5 @@
 
 int	ft_putstr(char *str)
 {
-	int	count;
-
-	count = 0;
-	while (str[count])
-		ft_putchar(str[count++]);
-	return (count);
+	return (write(1, str, ft_strlen(str)));
 }

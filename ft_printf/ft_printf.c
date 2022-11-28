@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 12:13:00 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/28 11:50:14 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/28 13:25:24 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,33 +46,36 @@ int	ft_printf(const char *input, ...)
 {
 	va_list	params;
 	t_print	tab;
+	const char	*str;
+	int x;
 
+	str = input;
 	if (!input)
 		return (0);
 	va_start(params, input);
 	tab.width = 0;
 	tab.total_len = 0;
+	x = 0;
 	while (*input)
 	{
 		if (*input == '%')
-			input = ft_params_search(params, input + 1);
-		else
-			input = ft_text_reader(&tab, input);
-		if (!input)
-		{
-			write(1, "(null)", 6);
-			va_end(params);
-			return (tab.total_len);
-		}
+			x = ft_params_search(params, ++input);
+		input++;
+//		else
+//			input = ft_text_reader(&tab, input);
 	}
 	va_end(params);
-	return (tab.total_len);
+	puts("");
+	printf("%s || %d\n", str, x);
+	return (x);
 }
 
 int	main(void)
 {
-	int	x = ft_printf("bonjour, %d\n", 18);
-	int	y = printf("bonjour, %d\n", 18);
+	int	x = ft_printf("%d", 42);
+	puts("");
+	int	y = printf("%d", 42);
+	puts("");
 
 	printf("%d\n", x);
 	printf("%d\n", y);
