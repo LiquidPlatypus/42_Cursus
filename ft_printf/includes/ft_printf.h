@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:28:33 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/28 10:46:10 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/28 10:54:02 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int				ft_int(int nbr);
 // ft_params_search.c
 
 const char		*ft_params_search(va_list params,
-					const char *input, t_print tab);
+					const char *input);
 
 // ft_percent.c
 
