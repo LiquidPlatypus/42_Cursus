@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 11:23:31 by marvin            #+#    #+#             */
-/*   Updated: 2022/11/28 11:11:49 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/28 11:14:19 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 int	ft_int(int nbr, t_print tab)
 {
-	int	count;
-
-	return (count = ft_iitoa(nbr));
+	return (tab.total_len = ft_iitoa(nbr));
 }
