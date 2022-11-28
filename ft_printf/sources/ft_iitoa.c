@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_iitoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 11:26:24 by marvin            #+#    #+#             */
-/*   Updated: 2022/11/26 11:26:24 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/28 16:22:28 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ int	ft_iitoa(int n)
 		return (0);
 	convert(final_str, orig_n, dgt_count, signe);
 	write(1, final_str, dgt_count);
+	free(final_str);
 	return (dgt_count);
 }
