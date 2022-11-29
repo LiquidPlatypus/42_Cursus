@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:28:33 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/29 13:34:00 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/29 14:28:30 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ int				ft_params_search(va_list params,
 // ft_percent.c
 
 int				ft_percent(void);
+
+// ft_pointer.c
+
+unsigned long	ft_pointer(unsigned long nbr);
 
 // ft_printf.c
 
