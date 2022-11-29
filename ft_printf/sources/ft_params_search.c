@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 13:47:38 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/28 18:52:43 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/29 13:19:03 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_params_search(va_list params, const char *input)
 	if (*input == 'u')
 		return (ft_uint(va_arg(params, unsigned int)));
 	if (*input == 'x' || *input == 'X')
-		return (ft_hexa(va_arg(params, int)));
+		return (ft_hexa(*input, va_arg(params, int)));
 	if (*input == '%')
 		return (ft_percent());
 	return (-1);
