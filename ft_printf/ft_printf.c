@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 12:13:00 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/28 16:16:36 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/29 14:22:00 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,27 +54,27 @@ int	ft_input_len(const char *input)
 	return (index);
 }
 
-int	ft_printf(const char *input, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list	params;
 	t_print	tab;
 	int		final_len;
 
-	if (!input)
+	if (!format)
 		return (0);
-	va_start(params, input);
+	va_start(params, format);
 	final_len = 0;
-	while (*input)
+	while (*format)
 	{
-		if (*input == '%')
+		if (*format == '%')
 		{
-			final_len += ft_params_search(params, ++input);
-			input++;
+			final_len += ft_params_search(params, ++format);
+			format++;
 		}
 		else
 		{
-			final_len += ft_input_len(input);
-			input = ft_text_reader(&tab, input);
+			final_len += ft_input_len(format);
+			format = ft_text_reader(&tab, format);
 		}
 	}
 	va_end(params);
@@ -83,9 +83,9 @@ int	ft_printf(const char *input, ...)
 /*
 int	main(void)
 {
-	int	x = ft_printf("%%c");
+	int	x = ft_printf("%X", -6000023);
 	puts("");
-	int	y = printf("%%c");
+	int	y = printf("%X", -6000023);
 	puts("");
 
 
