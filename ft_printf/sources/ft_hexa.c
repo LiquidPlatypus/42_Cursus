@@ -6,12 +6,11 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 18:05:15 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/29 14:21:46 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/29 14:26:56 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include <stdio.h>
 
 unsigned int	ft_hexa(char c, unsigned int nbr)
 {
