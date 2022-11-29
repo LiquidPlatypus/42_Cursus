@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:28:33 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/28 12:32:31 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/29 13:34:00 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ typedef struct s_print
 
 int				ft_char(int c);
 
+// ft_hexa.c
+
+unsigned int	ft_hexa(char c, unsigned int nbr);
+
 // ft_iitoa.c
 
 int				ft_iitoa(int n);
@@ -43,6 +47,10 @@ int				ft_params_search(va_list params,
 // ft_percent.c
 
 int				ft_percent(void);
+
+// ft_printf.c
+
+int				ft_printf(const char *format, ...);
 
 // ft_string.c
 
