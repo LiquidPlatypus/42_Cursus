@@ -6,29 +6,28 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 14:23:31 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/29 14:28:12 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/30 10:00:52 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-unsigned long	ft_pointer(unsigned long nbr)
+unsigned long	ft_pointer(unsigned long ptr)
 {
-	char	*hexaup;
-	char	res[100];
-	int		index;
-	int		count;
+	int	count;
 
-	hexaup = "0123456789ABCDEF";
-	index = 0;
-	while (nbr >= 16)
+	count = 0;
+	if (ptr >= 16)
 	{
-		res[index++] = hexaup[nbr % 16];
-		nbr = nbr / 16;
+		count += ft_pointer(ptr / 16);
+		count += ft_pointer(ptr % 16);
 	}
-	res[index] = hexaup[nbr];
-	count = index + 1;
-	while (index >= 0)
-		ft_putchar(res[index--]);
+	if (ptr < 16)
+	{
+		if (ptr < 10)
+			count += ft_putchar(ptr + 48);
+		else
+			count += ft_putchar(ptr + 87);
+	}
 	return (count);
 }

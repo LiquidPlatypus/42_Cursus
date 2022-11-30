@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 13:47:38 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/29 14:25:06 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/30 09:59:01 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ int	ft_params_search(va_list params, const char *input)
 	if (*input == 's')
 		return (ft_string(va_arg(params, char *)));
 	if (*input == 'p')
-		return (ft_pointer(va_arg(params, void *)));
+	{
+		write(1, "0x", 2);
+		return (ft_pointer(va_arg(params, unsigned long)) + 2);
+	}
 	if (*input == 'd' || *input == 'i')
 		return (ft_int(va_arg(params, int)));
 	if (*input == 'u')

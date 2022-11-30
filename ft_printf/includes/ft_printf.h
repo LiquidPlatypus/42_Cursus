@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:28:33 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/29 14:28:30 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/30 09:44:12 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int				ft_percent(void);
 
 // ft_pointer.c
 
-unsigned long	ft_pointer(unsigned long nbr);
+unsigned long	ft_pointer(unsigned long ptr);
 
 // ft_printf.c
 
