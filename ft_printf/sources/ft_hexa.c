@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 18:05:15 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/29 14:26:56 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/30 15:23:34 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ unsigned int	ft_hexa(char c, unsigned int nbr)
 		res[index] = hexaup[nbr];
 	count = index + 1;
 	while (index >= 0)
-		ft_putchar(res[index--]);
+		count = ft_putchar(res[index--]);
 	return (count);
 }

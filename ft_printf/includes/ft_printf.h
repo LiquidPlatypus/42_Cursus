@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:28:33 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/30 09:44:12 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/30 15:09:10 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,6 @@ unsigned int	ft_hexa(char c, unsigned int nbr);
 
 int				ft_iitoa(int n);
 
-// ft_int.c
-
-int				ft_int(int nbr);
-
 // ft_params_search.c
 
 int				ft_params_search(va_list params,
@@ -59,9 +55,5 @@ int				ft_printf(const char *format, ...);
 // ft_string.c
 
 int				ft_string(char *input);
-
-// ft_uint.c
-
-unsigned int	ft_uint(unsigned int nbr);
 
 #endif

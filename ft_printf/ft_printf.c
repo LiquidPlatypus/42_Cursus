@@ -6,11 +6,12 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 12:13:00 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/30 13:27:26 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/30 15:22:14 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
+#include <stdio.h>
 
 int	ft_printf(const char *format, ...)
 {
@@ -22,16 +23,32 @@ int	ft_printf(const char *format, ...)
 	final_len = 0;
 	while (*format)
 	{
-		if (check == -1)
-			break ;
+		check = 0;
 		if (*format == '%')
 		{
-			final_len += ft_params_search(params, ++format);
+			check = ft_params_search(params, ++format);
+			if (check == -1)
+				return (-1);
 			format++;
+			final_len += check;
 		}
 		else
-			final_len += ft_putchar(*format++);
+		{
+			check = ft_putchar(*format++);
+			if (check == -1)
+				return (-1);
+			final_len += check;
+		}
 	}
 	va_end(params);
 	return (final_len);
 }
+/*
+int main()
+{
+	int x = ft_printf("%u", -1);
+	puts("");
+	printf("%d", x);
+	return 0;
+}
+*/
