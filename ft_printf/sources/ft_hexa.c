@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 18:05:15 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/30 15:23:34 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/30 15:48:56 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,26 @@
 unsigned int	ft_hexa(char c, unsigned int nbr)
 {
 	char	*hexa;
-	char	*hexaup;
-	char	res[100];
+	char	res[11];
 	int		index;
 	int		count;
 
-	hexa = "0123456789abcdef";
-	hexaup = "0123456789ABCDEF";
+	hexa = "0123456789ABCDEF";
+	if (c == 'x')
+		hexa = "0123456789abcdef";
 	index = 0;
 	while (nbr >= 16)
 	{
-		if (c == 'x')
-			res[index++] = hexa[nbr % 16];
-		else
-			res[index++] = hexaup[nbr % 16];
+		res[index++] = hexa[nbr % 16];
 		nbr = nbr / 16;
 	}
-	if (c == 'x')
-		res[index] = hexa[nbr];
-	else
-		res[index] = hexaup[nbr];
-	count = index + 1;
+	res[index] = hexa[nbr];
+	count = 0;
 	while (index >= 0)
-		count = ft_putchar(res[index--]);
+	{
+		if (ft_putchar(res[index--]) == -1)
+			return (-1);
+		count++;
+	}
 	return (count);
 }

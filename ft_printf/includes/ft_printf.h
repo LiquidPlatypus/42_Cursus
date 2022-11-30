@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:28:33 by tbournon          #+#    #+#             */
-/*   Updated: 2022/11/30 15:09:10 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/11/30 15:31:23 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ unsigned int	ft_hexa(char c, unsigned int nbr);
 // ft_iitoa.c
 
 int				ft_iitoa(int n);
+
+// ft_uitoa.c
+
+int				ft_uitoa(unsigned int n);
 
 // ft_params_search.c
 
