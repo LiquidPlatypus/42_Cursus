@@ -10,3 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
+
+void	read_and_stash()
+{
+
+}
+
+void	add_to_stash()
+{
+
+}
+
+void	extract_line()
+{
+
+}
+
+void	clean_stash()
+{
+
+}
