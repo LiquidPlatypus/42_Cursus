@@ -10,7 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h> // ! A ENLEVER -------------------------------------
+
 char	*get_next_line(int fd)
 {
 
+}
+
+int	main(void)
+{
+	int	fd;
+	int	*line;
+
+	fd = open("test/simple", 0_RDONLY);
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			break ;
+		printf("%s", line);
+		free(line);
+	}
+	return (0);
 }
