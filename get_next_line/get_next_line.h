@@ -25,6 +25,12 @@ typedef struct s_list
 	struct s_list	*next;
 }				t_list;
 
+// get_next_line.c
+
 char	*get_next_line(int fd);
+
+// get_next_line_utils.c
+
+void	read_and_stash(int fd, t_list **stash, int *reader);
 
 #endif

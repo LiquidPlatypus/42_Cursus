@@ -24,7 +24,9 @@ char	*get_next_line(int fd)
 	readed = 1;
 	line = NULL;
 	// 1. read from fd and add to linked list
-	read_and_stash(&stash, &readed);
+	read_and_stash(fd, &stash, &readed);
+	if (stash == NULL)
+		return (NULL);
 	// 2. extract from stash to line
 	// 3. clean up stash
 	return (line);

@@ -14,9 +14,23 @@
 
 // Uses read() to add characters to the stash
 
-void	read_and_stash()
+void	read_and_stash(int fd, t_list **stash, int *reader)
 {
+	char	*buffer;
 
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (buffer == NULL)
+		return ;
+	while (!found_newline(*stash) && *reader != 0)
+	{
+		*reader = (int)read(fd, buffer, BUFFER_SIZE);
+		if ((*stash == NULL && *reader == 0 || *reader == -1))
+		{
+			free(buffer);
+			return ;
+		}
+		buffer[*reader] = '\0';
+	}
 }
 
 // Adds the content of our buffer to the end of our stash
