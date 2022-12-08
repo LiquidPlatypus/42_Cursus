@@ -6,13 +6,23 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 11:06:26 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/04 11:06:26 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/12/08 11:16:22 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 // Uses read() to add characters to the stash
+
+int	found_newline(t_list *stash)
+{
+	while (stash->*content++ != '\n')
+	{
+		if (stash->*content == '\n')
+			return (1);
+	}
+	return (0);
+}
 
 void	read_and_stash(int fd, t_list **stash, int *reader)
 {
@@ -24,7 +34,7 @@ void	read_and_stash(int fd, t_list **stash, int *reader)
 	while (!found_newline(*stash) && *reader != 0)
 	{
 		*reader = (int)read(fd, buffer, BUFFER_SIZE);
-		if ((*stash == NULL && *reader == 0 || *reader == -1))
+		if ((*stash == NULL && *reader == 0) || *reader == -1)
 		{
 			free(buffer);
 			return ;
