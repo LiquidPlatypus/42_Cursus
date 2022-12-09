@@ -9,3 +9,5 @@ ft_printf/.vscode/launch.json
 ft_printf/.vscode/settings.json
 ft_printf/.vscode/tasks.json
 get_next_line/.vscode/tasks.json
+get_next_line/.vscode/launch.json
+get_next_line/a.out.dSYM/Contents/Info.plist
