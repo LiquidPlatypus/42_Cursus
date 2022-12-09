@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 11:08:09 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/08 10:08:12 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:21:39 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ char	*get_next_line(int fd);
 
 // get_next_line_utils.c
 
-void	read_and_stash(int fd, t_list **stash, int *reader);
+char	*line_reader(int fd, char *line);
 
 #endif
