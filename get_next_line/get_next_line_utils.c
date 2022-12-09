@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 11:06:26 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/09 16:44:43 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:39:44 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 
 char	*line_reader(int fd, char *line)
 {
-	int	index;
-
-	index = 0;
-	while (index <= BUFFER_SIZE)
-	{
-		read(fd, line, BUFFER_SIZE);
-		index++;
-	}
+	read(fd, line, BUFFER_SIZE);
 	return (line);
 }
