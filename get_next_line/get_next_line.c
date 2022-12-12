@@ -14,17 +14,100 @@
 #include <fcntl.h> // !    A ENLEVER ----------------------------------------------------
 #include <stdio.h> // !    A ENLEVER ----------------------------------------------------
 
+char	*get_line(int fd, char *line);
+char	*ft_get_next_line(char *line);
+char	*new_line(char *line);
+
 char	*get_next_line(int fd)
 {
-	char	line[BUFFER_SIZE + 1];
-	// int		index;
+	static char	*line;
+	char		*next_line;
 
-	//index = BUFFER_SIZE;
-	if (fd < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	read(fd, line, BUFFER_SIZE);
-	line[BUFFER_SIZE] = '\0';
+	line = get_line(fd, line);
+	if (!line)
+		return (NULL);
+	next_line = ft_get_next_line(line);
+	line = new_line(line);
+	return (next_line);
+}
+
+char	*get_line(int fd, char *line)
+{
+	char	*buffer;
+	int		len;
+
+	buffer = (char *)malloc(BUFFER_SIZE + 1);
+	if (!buffer)
+		return (NULL);
+	len = 1;
+	while (!ft_strchr(line, '\n') && len > 0)
+	{
+		len = read(fd, buffer, BUFFER_SIZE);
+		if (len == -1)
+		{
+			free(buffer);
+			return (NULL);
+		}
+		buffer[len] = '\0';
+		line = ft_strjoin(line, buffer);
+	}
+	free(buffer);
 	return (line);
+}
+
+char	*ft_get_next_line(char *line)
+{
+	int		index;
+	char	*str;
+
+	index = 0;
+	if (!line[index])
+		return (NULL);
+	while (line[index] && line[index] != '\n')
+		index++;
+	str = (char *)malloc(index + 2);
+	if (!str)
+		return (NULL);
+	while (line[index] && line[index] != '\n')
+	{
+		str[index] = line[index];
+		index++;
+	}
+	if (line[index] == '\n')
+	{
+		str[index] = line[index];
+		index++;
+	}
+	str[index] = '\0';
+	return (str);
+}
+
+char	*new_line(char *line)
+{
+	int		index;
+	int		index2;
+	char	*str;
+
+	index = 0;
+	while (line[index] && line[index] != '\n')
+		index++;
+	if (!line[index])
+	{
+		free(line);
+		return (NULL);
+	}
+	str = (char *)malloc(sizeof(char) * (ft_strlen(line) - index + 1));
+	if (!str)
+		return (NULL);
+	index++;
+	index2 = 0;
+	while (line[index])
+		str[index2++] = line[index++];
+	str[index2] = '\0';
+	free(line);
+	return (str);
 }
 
 int main()

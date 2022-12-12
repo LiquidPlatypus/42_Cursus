@@ -29,9 +29,14 @@ typedef struct s_list
 // get_next_line.c
 
 char	*get_next_line(int fd);
+char	*get_line(int fd, char *line);
+char	*ft_get_next_line(char *line);
+char	*new_line(char *line);
 
 // get_next_line_utils.c
 
-char	*line_reader(int fd, char *line);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strjoin(char const *s1, char const *s2);
+int		ft_strlen(const char *str);
 
 #endif
