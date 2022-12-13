@@ -6,34 +6,15 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 11:04:40 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/09 17:49:28 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/12/13 16:40:53 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <fcntl.h> // !    A ENLEVER ----------------------------------------------------
-#include <stdio.h> // !    A ENLEVER ----------------------------------------------------
+#include <fcntl.h> // ! A ENLVER -----------------------------------------
+#include <stdio.h> // ! A ENLVER -----------------------------------------
 
-char	*get_line(int fd, char *line);
-char	*ft_get_next_line(char *line);
-char	*new_line(char *line);
-
-char	*get_next_line(int fd)
-{
-	static char	*line;
-	char		*next_line;
-
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	line = get_line(fd, line);
-	if (!line)
-		return (NULL);
-	next_line = ft_get_next_line(line);
-	line = new_line(line);
-	return (next_line);
-}
-
-char	*get_line(int fd, char *line)
+static char	*ft_get_line(int fd, char *line)
 {
 	char	*buffer;
 	int		len;
@@ -57,7 +38,7 @@ char	*get_line(int fd, char *line)
 	return (line);
 }
 
-char	*ft_get_next_line(char *line)
+static char	*ft_get_suiv_line(char *line)
 {
 	int		index;
 	char	*str;
@@ -70,6 +51,7 @@ char	*ft_get_next_line(char *line)
 	str = (char *)malloc(index + 2);
 	if (!str)
 		return (NULL);
+	index = 0;
 	while (line[index] && line[index] != '\n')
 	{
 		str[index] = line[index];
@@ -84,7 +66,7 @@ char	*ft_get_next_line(char *line)
 	return (str);
 }
 
-char	*new_line(char *line)
+static char	*ft_new_line(char *line)
 {
 	int		index;
 	int		index2;
@@ -100,7 +82,10 @@ char	*new_line(char *line)
 	}
 	str = (char *)malloc(sizeof(char) * (ft_strlen(line) - index + 1));
 	if (!str)
+	{
+		free(line);
 		return (NULL);
+	}
 	index++;
 	index2 = 0;
 	while (line[index])
@@ -110,6 +95,22 @@ char	*new_line(char *line)
 	return (str);
 }
 
+char	*get_next_line(int fd)
+{
+	static char	*line;
+	char		*next_line;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	line = ft_get_line(fd, line);
+	if (!line)
+		return (NULL);
+	next_line = ft_get_suiv_line(line);
+	line = ft_new_line(line);
+	return (next_line);
+}
+
+/*
 int main()
 {
 	int x;
@@ -120,3 +121,4 @@ int main()
 
 	return (0);
 }
+*/

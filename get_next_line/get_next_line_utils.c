@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 11:06:26 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/09 17:39:44 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/12/13 13:36:55 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strchr(const char *s, int c)
 	int			index;
 
 	index = 0;
+	if (!s)
+		return (NULL);
 	while (s[index] != (unsigned char)c && s[index] != '\0')
 		index++;
 	if (s[index] == (unsigned char)c)
@@ -25,31 +27,31 @@ char	*ft_strchr(const char *s, int c)
 		return (NULL);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	unsigned int	x;
-	char			*str;
+	int		i;
+	int		j;
+	char	*str;
 
-	x = 0;
+	if (!s1)
+	{
+		s1 = (char *)malloc(1 * sizeof(char));
+		s1[0] = '\0';
+	}
 	if (!s1 || !s2)
 		return (NULL);
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (str != NULL)
-	{
-		while (*s1 != '\0')
-		{
-			str[x] = *s1;
-			x++;
-			s1++;
-		}
-		while (*s2 != '\0')
-		{
-			str[x] = *s2;
-			x++;
-			s2++;
-		}
-		str[x] = '\0';
-	}
+	str = malloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2)) + 1));
+	if (str == NULL)
+		return (NULL);
+	i = -1;
+	j = 0;
+	if (s1)
+		while (s1[++i] != '\0')
+			str[i] = s1[i];
+	while (s2[j] != '\0')
+		str[i++] = s2[j++];
+	str[ft_strlen(s1) + ft_strlen(s2)] = '\0';
+	free(s1);
 	return (str);
 }
 
