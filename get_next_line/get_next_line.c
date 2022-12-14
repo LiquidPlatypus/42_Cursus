@@ -107,7 +107,7 @@ char	*get_next_line(int fd)
 	return (next_line);
 }
 
-/*
+
 int main()
 {
 	int x;
@@ -115,7 +115,10 @@ int main()
 	x = open("test.txt", O_RDONLY);
 
 	printf("%s", get_next_line(x));
+	printf("%s", get_next_line(x));
+	printf("%s", get_next_line(x));
+	printf("%s", get_next_line(x));
+	printf("%s", get_next_line(x));
 
 	return (0);
 }
-*/
