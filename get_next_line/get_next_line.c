@@ -82,10 +82,7 @@ static char	*ft_new_line(char *line)
 	}
 	str = (char *)malloc(sizeof(char) * (ft_strlen(line) - index + 1));
 	if (!str)
-	{
-		free(line);
 		return (NULL);
-	}
 	index++;
 	index2 = 0;
 	while (line[index])
