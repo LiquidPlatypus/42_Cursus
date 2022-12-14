@@ -107,7 +107,7 @@ char	*get_next_line(int fd)
 	return (next_line);
 }
 
-
+/*
 int main()
 {
 	int x;
@@ -122,3 +122,4 @@ int main()
 
 	return (0);
 }
+*/
