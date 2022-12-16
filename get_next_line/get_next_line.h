@@ -20,20 +20,16 @@
 #  define BUFFER_SIZE 1
 # endif
 
-typedef struct s_list
-{
-	char			*content;
-	struct s_list	*next;
-}				t_list;
-
 // get_next_line.c
 
 char	*get_next_line(int fd);
 
 // get_next_line_utils.c
 
+int		ft_strlen(const char *str);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
-int		ft_strlen(const char *str);
+char	*ft_get_line(char *left_str);
+char	*ft_new_left_str(char *left_str);
 
 #endif

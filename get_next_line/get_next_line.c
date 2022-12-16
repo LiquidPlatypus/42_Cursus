@@ -11,100 +11,46 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <fcntl.h> // ! A ENLVER -----------------------------------------
-#include <stdio.h> // ! A ENLVER -----------------------------------------
+#include <fcntl.h> // !                                 
+#include <stdio.h> // !                                 
 
-static char	*ft_get_line(int fd, char *line)
+char	*ft_read_to_left_str(int fd, char *left_str)
 {
 	char	*buffer;
-	int		len;
+	int		byt_readed;
 
-	buffer = (char *)malloc(BUFFER_SIZE + 1);
+	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
-	len = 1;
-	while (!ft_strchr(line, '\n') && len > 0)
+	byt_readed = 1;
+	while (!ft_strchr(left_str, '\n') && byt_readed != 0)
 	{
-		len = read(fd, buffer, BUFFER_SIZE);
-		if (len == -1)
+		byt_readed = read(fd, buffer, BUFFER_SIZE);
+		if (byt_readed == -1)
 		{
 			free(buffer);
 			return (NULL);
 		}
-		buffer[len] = '\0';
-		line = ft_strjoin(line, buffer);
+		buffer[byt_readed] = '\0';
+		left_str = ft_strjoin(left_str, buffer);
 	}
 	free(buffer);
-	return (line);
-}
-
-static char	*ft_get_suiv_line(char *line)
-{
-	int		index;
-	char	*str;
-
-	index = 0;
-	if (!line[index])
-		return (NULL);
-	while (line[index] && line[index] != '\n')
-		index++;
-	str = (char *)malloc(index + 2);
-	if (!str)
-		return (NULL);
-	index = 0;
-	while (line[index] && line[index] != '\n')
-	{
-		str[index] = line[index];
-		index++;
-	}
-	if (line[index] == '\n')
-	{
-		str[index] = line[index];
-		index++;
-	}
-	str[index] = '\0';
-	return (str);
-}
-
-static char	*ft_new_line(char *line)
-{
-	int		index;
-	int		index2;
-	char	*str;
-
-	index = 0;
-	while (line[index] && line[index] != '\n')
-		index++;
-	if (!line[index])
-	{
-		free(line);
-		return (NULL);
-	}
-	str = (char *)malloc(sizeof(char) * (ft_strlen(line) - index + 1));
-	if (!str)
-		return (NULL);
-	index++;
-	index2 = 0;
-	while (line[index])
-		str[index2++] = line[index++];
-	str[index2] = '\0';
-	free(line);
-	return (str);
+	return (left_str);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*line;
-	char		*next_line;
+	char		*line;
+	static char	*left_str;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (0);
+	left_str = ft_read_to_left_str(fd, left_str);
+	if (!left_str)
 		return (NULL);
-	line = ft_get_line(fd, line);
-	if (!line)
-		return (NULL);
-	next_line = ft_get_suiv_line(line);
-	line = ft_new_line(line);
-	return (next_line);
+	line = ft_get_line(left_str);
+	left_str = ft_new_left_str(left_str);
+	return (line);
 }
 
 /*
