@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 11:06:26 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/13 13:36:55 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/12/17 16:42:34 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,21 @@ char	*ft_strjoin(char *left_str, char *buff)
 	if (!left_str)
 	{
 		left_str = (char *)malloc(1 * sizeof(char));
+		if (!left_str)
+			return (NULL);
 		left_str[0] = '\0';
 	}
 	if (!left_str || !buff)
+	{
+		free(left_str);
 		return (NULL);
+	}
 	str = malloc(sizeof(char) * ((ft_strlen(left_str) + ft_strlen(buff)) + 1));
 	if (str == NULL)
+	{
+		free(left_str);
 		return (NULL);
+	}
 	i = -1;
 	j = 0;
 	if (left_str)
@@ -105,6 +113,7 @@ char	*ft_new_left_str(char *left_str)
 	char	*str;
 
 	i = 0;
+	str = NULL;
 	while (left_str[i] && left_str[i] != '\n')
 		i++;
 	if (!left_str[i])
