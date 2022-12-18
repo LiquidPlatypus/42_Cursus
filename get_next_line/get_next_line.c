@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 11:04:40 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/17 16:41:40 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/12/18 14:42:42 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,12 @@ int main()
 {
 	int x;
 
-	x = open("test.txt", O_RDONLY);
+	x = open("giant_line.txt", O_RDONLY);
 
+	printf("%s", get_next_line(x));
+	printf("%s", get_next_line(x));
+	printf("%s", get_next_line(x));
+	printf("%s", get_next_line(x));
 	printf("%s", get_next_line(x));
 	printf("%s", get_next_line(x));
 
