@@ -6,3 +6,13 @@ a.out
 .vscode/tasks.json
 .vscode/launch.json
 test.txt
+1char.txt
+empty.txt
+giant_line.txt
+giant_line_nl.txt
+lines_around_10.txt
+multiple_nl.txt
+one_line_no_nl.txt
+only_nl.txt
+read_error.txt
+variable_nls.txt
