@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 11:06:26 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/19 16:11:57 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/12/19 17:00:45 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*ft_strjoin(char *left_str, char *buff)
 			return (NULL);
 		left_str[0] = '\0';
 	}
-	if (!left_str || !buff)
+	if (!left_str || !buff) // ! 1er fois : check si buff est vide		2eme fois : check si left_str == EOF
 	{
 		free(left_str);
 		return (NULL);
