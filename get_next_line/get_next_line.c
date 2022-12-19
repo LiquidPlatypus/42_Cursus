@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 11:04:40 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/18 14:42:42 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/12/19 16:18:41 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,12 @@ char	*get_next_line(int fd)
 int main()
 {
 	int x;
+	char *str;
 
-	x = open("giant_line.txt", O_RDONLY);
+	x = open("only_nl.txt", O_RDONLY);
 
-	printf("%s", get_next_line(x));
-	printf("%s", get_next_line(x));
-	printf("%s", get_next_line(x));
-	printf("%s", get_next_line(x));
-	printf("%s", get_next_line(x));
-	printf("%s", get_next_line(x));
+	while ((str = get_next_line(x)))
+		printf("%s", str);
 
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 11:06:26 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/18 14:04:55 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/12/19 16:11:57 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,11 @@ char	*ft_get_line(char *left_str)
 //	i = ft_strlen(left_str);
 	if (!left_str[0])
 		return (NULL);
-	while (left_str[i] && left_str[i] != '\n')
+	if (left_str[0] != '\n')
+	{
+		while (left_str[i] && left_str[i] != '\n')
 		i++;
+	}
 	if (i < 2 || left_str[i] != '\n')
 		str = (char *)malloc(sizeof(char) * (i + 1));
 	else
