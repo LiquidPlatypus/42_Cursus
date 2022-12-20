@@ -16,3 +16,4 @@ one_line_no_nl.txt
 only_nl.txt
 read_error.txt
 variable_nls.txt
+leacks_cheker_ex.c
