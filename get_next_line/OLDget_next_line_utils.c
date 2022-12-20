@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   OLDget_next_line_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 11:06:26 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/19 17:00:45 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/12/20 13:00:51 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "OLDget_next_line.h"
 
 int	ft_strlen(const char *s)
 {

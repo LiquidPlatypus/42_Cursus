@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   OLDget_next_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 11:04:40 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/20 11:21:57 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/12/20 13:00:48 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "OLDget_next_line.h"
 #include <fcntl.h> // !                                 
 #include <stdio.h> // !                                 
+
+void	check_leaks(void); // !                         
 
 char	*ft_read_to_left_str(int fd, char *left_str)
 {
@@ -54,7 +56,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/*
+
 int main()
 {
 	int x;
@@ -67,6 +69,6 @@ int main()
 	puts(".");
 	printf("%s", str);
 
+	check_leaks();
 	return (0);
 }
-*/
