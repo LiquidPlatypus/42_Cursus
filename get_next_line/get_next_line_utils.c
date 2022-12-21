@@ -6,126 +6,88 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:24:24 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/20 16:49:45 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/12/21 15:53:11 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(const char *s)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
+	int		sizetotal;
+	char	*res;
 	int		i;
+	int		j;
 
 	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != 0)
+	sizetotal = ft_sstrlen(s1) + ft_sstrlen(s2);
+	res = malloc(sizeof(char) * (sizetotal + 1));
+	if (!res || !s1 || !s2)
+		return (NULL);
+	while (s1[i] != 0)
+	{
+		res[i] = s1[i];
 		i++;
-	return (i);
+	}
+	j = 0;
+	while (s2[j] != 0)
+	{
+		res[i] = s2[j];
+		i++;
+		j++;
+	}
+	res[sizetotal] = 0;
+	return (res);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *string, int c)
+{
+	char	*str;
+
+	str = (char *)string;
+	while (*str != c && *str != 0)
+		str++;
+	if (*str == c)
+		return (str);
+	else
+		return (NULL);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	char	*str;
+	size_t	i;
+
+	str = (char *)s;
+	i = 0;
+	while (i < n)
+	{
+		str[i] = '\0';
+		i++;
+	}
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	char	*res;
+
+	if (count == 0 || size == 0)
+		return (NULL);
+	res = malloc(size * count);
+	if (!res)
+		return (NULL);
+	ft_bzero(res, size * count);
+	return (res);
+}
+
+size_t	ft_sstrlen(const char *str)
 {
 	int	i;
 
 	i = 0;
-	if (!s)
+	if (!str)
 		return (0);
-	if (c == '\0')
-		return ((char *)&s[ft_strlen(s)]);
-	while (s[i] != '\0')
-	{
-		if (s[i] == (char) c)
-			return ((char *)&s[i]);
+	while (str[i])
 		i++;
-	}
-	return (0);
-}
-
-char	*ft_strjoin(char *left_str, char *buff)
-{
-	size_t	i;
-	size_t	j;
-	char	*str;
-
-	if (!left_str)
-	{
-		if (!*buff)
-		{
-			free(left_str);
-			return (NULL);
-		}
-		free(buff);
-		return (NULL);
-	}
-	str = malloc(sizeof(char) * ((ft_strlen(left_str) + ft_strlen(buff)) + 1));
-	if (!str)
-		return (ft_freestr(str, buff));
-	i = -1;
-	j = 0;
-	if (left_str)
-		while (left_str[++i] != '\0')
-			str[i] = left_str[i];
-	while (buff[j] != '\0')
-		str[i++] = buff[j++];
-	str[ft_strlen(left_str) + ft_strlen(buff)] = '\0';
-	free(left_str);
-	return (str);
-}
-
-char	*ft_stack_line(char *left_str)
-{
-	int		i;
-	char	*str;
-
-	i = 1;
-	if (!*left_str)
-		return (NULL);
-	while (left_str[i] && left_str[i] != '\n')
-		i++;
-	if (i < 2 || left_str[i] != '\n')
-		str = (char *)malloc(sizeof(char) * (i + 1));
-	else
-		str = (char *)malloc(sizeof(char) * (i + 2));
-	if (!str)
-		return (ft_freestr(left_str, str));
-	i = 0;
-	while (left_str[i] && left_str[i] != '\n')
-	{
-		str[i] = left_str[i];
-		i++;
-	}
-	if (left_str[i] == '\n')
-	{
-		str[i] = left_str[i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
-}
-
-char	*ft_left(char *left_str)
-{
-	int		i;
-	int		j;
-	char	*str;
-
-	i = 0;
-	while (left_str[i] && left_str[i] != '\n')
-		i++;
-	if (!left_str[i])
-	{
-		free(left_str);
-		return (NULL);
-	}
-	str = (char *)malloc(sizeof(char) * (ft_strlen(left_str) - i + 1));
-	if (!str)
-		return (NULL);
-	i++;
-	j = 0;
-	while (left_str[i])
-		str[j++] = left_str[i++];
-	str[j] = '\0';
-	free(left_str);
-	return (str);
+	return (i);
 }

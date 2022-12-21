@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:24:21 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/20 16:52:34 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/12/21 16:35:00 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,74 +16,134 @@
 
 void	check_leaks(void);  // !											
 
-void	*ft_freestr(char *left_str, char *buffer)
+char	*ft_free(char *buffer, char *buf)
 {
-	if (left_str != NULL)
-	{
-		free(left_str);
-		return (NULL);
-	}
+	char	*tmp;
+
+	tmp = ft_strjoin(buffer, buf);
 	free(buffer);
-	return (NULL);
+	return (tmp);
 }
 
-static char	*ft_read_line(int fd, char *left_str, char *buff)
+// delete line find
+char	*ft_next_line(char *buffer)
 {
+	int		i;
+	int		j;
+	char	*line;
+
+	i = 0;
+	// find len of firts line
+	while (buffer[i] && buffer[i] != '\n')
+		i++;
+	// if EOL == \0 return NULL
+	if (!buffer[i])
+	{
+		free(buffer);
+		return (NULL);
+	}
+	// len of file - len of firtsline + 1
+	line = ft_calloc((ft_sstrlen(buffer) - i + 1), sizeof(char));
+	i++;
+	j = 0;
+	// line== buffer
+	while (buffer[i])
+		line[j++] = buffer[i++];
+	free(buffer);
+	return (line);
+}
+
+// take line for return
+char	*ft_get_line(char *buffer)
+{
+	char	*line;
+	int		i;
+
+	i = 0;
+	// if no line return NULL
+	if (!buffer[i])
+		return (NULL);
+	// go to EOL
+	while (buffer[i] && buffer[i] != '\n')
+		i++;
+	// malloc to EOL
+	if (i < 2 || buffer[i] != '\n')
+		line = ft_calloc(i + 1, sizeof(char));
+	else
+		line = ft_calloc(i + 2, sizeof(char));
+	i = 0;
+	// line = buffer
+	while (buffer[i] && buffer[i] != '\n')
+	{
+		line[i] = buffer[i];
+		i++;
+	}
+	// if EOL is \0 or \n, replace EOL bu \n
+	if (buffer[i] && buffer[i] == '\n')
+		line[i++] = '\n';
+	return (line);
+}
+
+char	*ft_read_file(int fd, char *str)
+{
+	char	*buffer;
 	int		byt_read;
 
-	buff = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buff)
-		return (NULL);
-	while (!ft_strchr(left_str, '\n'))
+	// malloc if res doesn't exist
+	if (!str)
+		str = ft_calloc(1, 1);
+	// malloc buffer
+	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	byt_read = 1;
+	while (byt_read > 0)
 	{
-		byt_read = read(fd, buff, BUFFER_SIZE);
+		// while not EOF read
+		byt_read = read(fd, buffer, BUFFER_SIZE);
 		if (byt_read == -1)
 		{
-			free(buff);
+			free(buffer);
 			return (NULL);
 		}
-		else if (byt_read == 0)
-		{
-			ft_freestr(buff, left_str);
-			return (NULL);
-		}
-		buff[byt_read] = '\0';
-		left_str = ft_strjoin(left_str, buff);
+		// 0 to end for leak
+		buffer[byt_read] = 0;
+		// join and free
+		str = ft_free(str, buffer);
+		// quit if \n find
+		if (ft_strchr(buffer, '\n'))
+			break ;
 	}
-	free(buff);
-	return (left_str);
+	free(buffer);
+	return (str);
 }
 
 char	*get_next_line(int fd)
 {
-	char		*line;
-	static char	*left_str;
-	char		*buffer;
+	char			*line;
+	static char		*buffer;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
-	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+		return (NULL);
+	buffer = ft_read_file(fd, buffer);
 	if (!buffer)
 		return (NULL);
-	left_str = ft_read_line(fd, left_str, buffer);		// Doit lire la ligne
-	if (!left_str)
-		ft_freestr(left_str, buffer);	/* si fin du fichier, doit free la chaine au 1er appel si elle n'est pas vide, et au 2ème appel doit return NULL */
-	line = ft_stack_line(left_str);				// stock la ligne jusqu'au \\n
-	left_str = ft_left(left_str);				// stock ce qu'il reste après le \\n pour l'appel suivant
+	line = ft_get_line(buffer);
+	buffer = ft_next_line(buffer);
 	return (line);
 }
 
+/*
 int main()
 {
 	int x;
 	char *str;
 
-	x = open("one_line_no_nl.txt", O_RDONLY);
+	x = open("empty.txt", O_RDONLY);
 
 	while ((str = get_next_line(x)))
 		printf("%s", str);
 	printf("%s", str);
 
-	check_leaks();
+//	check_leaks();
 	return (0);
 }
+*/
