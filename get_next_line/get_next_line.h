@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:24:28 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/21 15:42:48 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/12/22 13:51:25 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000000
+#  define BUFFER_SIZE 10
 # endif
 
 // get_next_line.c
@@ -26,7 +26,7 @@ char	*get_next_line(int fd);
 
 // get_next_line_utils.c
 
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char /*const*/ *s1, char const *s2);
 char	*ft_strchr(const char *string, int c);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);

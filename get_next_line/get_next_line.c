@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:24:21 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/21 16:35:00 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/12/22 15:31:23 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,16 @@ char	*ft_get_line(char *buffer)
 	char	*line;
 	int		i;
 
-	i = 0;
+	i = 1;
 	// if no line return NULL
-	if (!buffer[i])
+	if (!buffer[0])
 		return (NULL);
 	// go to EOL
-	while (buffer[i] && buffer[i] != '\n')
-		i++;
+	if (buffer[0] != '\n')
+	{
+		while (buffer[i] && buffer[i] != '\n')
+			i++;
+	}
 	// malloc to EOL
 	if (i < 2 || buffer[i] != '\n')
 		line = ft_calloc(i + 1, sizeof(char));
@@ -81,6 +84,7 @@ char	*ft_get_line(char *buffer)
 	// if EOL is \0 or \n, replace EOL bu \n
 	if (buffer[i] && buffer[i] == '\n')
 		line[i++] = '\n';
+	line[i] = '\0';
 	return (line);
 }
 
@@ -102,6 +106,7 @@ char	*ft_read_file(int fd, char *str)
 		if (byt_read == -1)
 		{
 			free(buffer);
+			buffer = NULL;
 			return (NULL);
 		}
 		// 0 to end for leak
@@ -137,7 +142,7 @@ int main()
 	int x;
 	char *str;
 
-	x = open("empty.txt", O_RDONLY);
+	x = open("read_error.txt", O_RDONLY);
 
 	while ((str = get_next_line(x)))
 		printf("%s", str);

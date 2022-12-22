@@ -6,13 +6,13 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:24:24 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/22 09:51:43 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/12/22 14:07:27 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char /*const*/ *s1, char const *s2)
 {
 	int		sizetotal;
 	char	*res;
