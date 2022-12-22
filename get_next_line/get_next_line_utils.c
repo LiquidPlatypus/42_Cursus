@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:24:24 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/21 15:53:11 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/12/22 09:51:43 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	char	*res;
 
-	if (count == 0 || size == 0)
-		return (NULL);
 	res = malloc(size * count);
 	if (!res)
 		return (NULL);
