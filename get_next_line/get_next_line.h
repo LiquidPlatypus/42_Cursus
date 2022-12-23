@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/20 11:24:28 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/22 13:51:25 by tbournon         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   get_next_line.h                                    :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: lsinke <lsinke@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/04/19 18:02:16 by lsinke        #+#    #+#                 */
+/*   Updated: 2022/04/19 18:02:16 by lsinke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-
-# include <stdlib.h>
-# include <unistd.h>
-
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
+#  define BUFFER_SIZE 42
 # endif
-
-// get_next_line.c
+# include <stdlib.h>
 
 char	*get_next_line(int fd);
 
-// get_next_line_utils.c
-
-char	*ft_strjoin(char /*const*/ *s1, char const *s2);
-char	*ft_strchr(const char *string, int c);
-void	ft_bzero(void *s, size_t n);
-void	*ft_calloc(size_t count, size_t size);
-size_t	ft_sstrlen(const char *str);
+/**
+ * Null safe version of strlen. Returns 0 if the string is NULL
+ */
+size_t	ft_strlen(const char *s);
+/**
+ * Finds a newline character in the string, and returns a pointer to it
+ * returns NULL if no newline was found
+ */
+char	*find_newline(char *str);
 
 #endif

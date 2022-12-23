@@ -5,150 +5,151 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/20 11:24:21 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/22 15:31:23 by tbournon         ###   ########.fr       */
+/*   Created: 2022/04/19 18:02:15 by lsinke            #+#    #+#             */
+/*   Updated: 2022/12/23 12:36:35 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <fcntl.h>			// ! 											
-#include <stdio.h>			// !											
+#include <unistd.h>
 
-void	check_leaks(void);  // !											
-
-char	*ft_free(char *buffer, char *buf)
+/**
+ * Join s1 and s2, making a copy of s2 if s1 is null. Always free s1.
+ *
+ * Takes the lengths of s1 and s2 as additional args to improve performance
+ *
+ * @return NULL if malloc fails, otherwise a freshly malloced string
+ */
+static char	*ft_strjoin(char *s1, const char *s2, size_t s1_len, size_t s2_len)
 {
-	char	*tmp;
+	char	*str;
+	size_t	idx;
 
-	tmp = ft_strjoin(buffer, buf);
-	free(buffer);
-	return (tmp);
-}
-
-// delete line find
-char	*ft_next_line(char *buffer)
-{
-	int		i;
-	int		j;
-	char	*line;
-
-	i = 0;
-	// find len of firts line
-	while (buffer[i] && buffer[i] != '\n')
-		i++;
-	// if EOL == \0 return NULL
-	if (!buffer[i])
+	str = malloc((s1_len + s2_len + 1) * sizeof(char));
+	if (!str)
 	{
-		free(buffer);
+		free(s1);
 		return (NULL);
 	}
-	// len of file - len of firtsline + 1
-	line = ft_calloc((ft_sstrlen(buffer) - i + 1), sizeof(char));
-	i++;
-	j = 0;
-	// line== buffer
-	while (buffer[i])
-		line[j++] = buffer[i++];
-	free(buffer);
-	return (line);
+	idx = 0;
+	while (idx < s1_len)
+	{
+		str[idx] = s1[idx];
+		++idx;
+	}
+	while (*s2)
+		str[idx++] = *s2++;
+	str[idx] = '\0';
+	if (s1)
+		free(s1);
+	return (str);
 }
 
-// take line for return
-char	*ft_get_line(char *buffer)
+/**
+ * Checks if leftover contains a newline. If not, read BUFFER_SIZE bytes
+ * and append them onto leftover. Repeat.
+ *
+ * Returns NULL if anything went wrong
+ */
+static char	*read_until_newline(int fd, char *leftover)
+{
+	char	*buffer;
+	ssize_t	read_bytes;
+	size_t	leftover_len;
+
+	if (find_newline(leftover))
+		return (leftover);
+	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!buffer)
+		return (NULL);
+	leftover_len = ft_strlen(leftover);
+	buffer[0] = '\0';
+	while (!find_newline(buffer))
+	{
+		read_bytes = read(fd, buffer, BUFFER_SIZE);
+		if (read_bytes <= 0)
+			break ;
+		buffer[read_bytes] = '\0';
+		leftover = ft_strjoin(leftover, buffer, leftover_len, read_bytes);
+		leftover_len += read_bytes;
+		if (!leftover)
+			break ;
+	}
+	free(buffer);
+	return (leftover);
+}
+
+/**
+ * Return everything in leftover up to (and including) the first newline
+ * If there is no newline, returns leftover and sets leftover_p to NULL
+ * If there is a newline, allocate a new string and copy everything.
+ */
+static char	*get_line(char **leftover_p, char *leftover)
 {
 	char	*line;
-	int		i;
+	char	*newline_idx;
+	size_t	i;
 
-	i = 1;
-	// if no line return NULL
-	if (!buffer[0])
+	newline_idx = find_newline(leftover);
+	if (!newline_idx)
+	{
+		line = leftover;
+		*leftover_p = NULL;
+		return (line);
+	}
+	line = malloc((newline_idx - leftover + 1 + 1) * sizeof(char));
+	if (!line)
+	{
+		free(leftover);
+		*leftover_p = NULL;
 		return (NULL);
-	// go to EOL
-	if (buffer[0] != '\n')
-	{
-		while (buffer[i] && buffer[i] != '\n')
-			i++;
 	}
-	// malloc to EOL
-	if (i < 2 || buffer[i] != '\n')
-		line = ft_calloc(i + 1, sizeof(char));
-	else
-		line = ft_calloc(i + 2, sizeof(char));
 	i = 0;
-	// line = buffer
-	while (buffer[i] && buffer[i] != '\n')
-	{
-		line[i] = buffer[i];
-		i++;
-	}
-	// if EOL is \0 or \n, replace EOL bu \n
-	if (buffer[i] && buffer[i] == '\n')
-		line[i++] = '\n';
+	while (leftover != newline_idx)
+		line[i++] = *leftover++;
+	line[i++] = '\n';
 	line[i] = '\0';
 	return (line);
 }
 
-char	*ft_read_file(int fd, char *str)
+/**
+ * Get everything after the first '\n' and put it in a new string.
+ * Always frees leftover
+ * If the newline was the last character in the string, return NULL
+ */
+static char	*get_leftover(char *leftover)
 {
-	char	*buffer;
-	int		byt_read;
+	char	*str;
+	char	*newline_idx;
+	size_t	len;
+	size_t	n;
 
-	// malloc if res doesn't exist
-	if (!str)
-		str = ft_calloc(1, 1);
-	// malloc buffer
-	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	byt_read = 1;
-	while (byt_read > 0)
-	{
-		// while not EOF read
-		byt_read = read(fd, buffer, BUFFER_SIZE);
-		if (byt_read == -1)
-		{
-			free(buffer);
-			buffer = NULL;
-			return (NULL);
-		}
-		// 0 to end for leak
-		buffer[byt_read] = 0;
-		// join and free
-		str = ft_free(str, buffer);
-		// quit if \n find
-		if (ft_strchr(buffer, '\n'))
-			break ;
-	}
-	free(buffer);
+	len = ft_strlen(leftover);
+	newline_idx = find_newline(leftover);
+	n = len - (newline_idx - leftover);
+	if (n != 1)
+		str = malloc(n * sizeof(char));
+	else
+		str = NULL;
+	if (str)
+		while (n--)
+			str[n] = newline_idx[n + 1];
+	free(leftover);
 	return (str);
 }
 
 char	*get_next_line(int fd)
 {
-	char			*line;
-	static char		*buffer;
+	static char	*leftover = NULL;
+	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0)
 		return (NULL);
-	buffer = ft_read_file(fd, buffer);
-	if (!buffer)
+	leftover = read_until_newline(fd, leftover);
+	if (!leftover)
 		return (NULL);
-	line = ft_get_line(buffer);
-	buffer = ft_next_line(buffer);
+	line = get_line(&leftover, leftover);
+	if (leftover != NULL)
+		leftover = get_leftover(leftover);
 	return (line);
 }
-
-/*
-int main()
-{
-	int x;
-	char *str;
-
-	x = open("read_error.txt", O_RDONLY);
-
-	while ((str = get_next_line(x)))
-		printf("%s", str);
-	printf("%s", str);
-
-//	check_leaks();
-	return (0);
-}
-*/
