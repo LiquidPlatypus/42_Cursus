@@ -1,18 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/19 18:02:15 by lsinke            #+#    #+#             */
-/*   Updated: 2022/12/26 14:35:38 by tbournon         ###   ########.fr       */
+/*   Created: 2022/04/19 18:02:15 by tbournon          #+#    #+#             */
+/*   Updated: 2022/12/26 14:29:21 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include <stdio.h> // !                                                         
 #include <fcntl.h> // !                                                         
+
+/**
+ * Join s1 and s2, making a copy of s2 if s1 is null. Always free s1.
+ *
+ * Takes the lengths of s1 and s2 as additional args to improve performance
+ *
+ * @return NULL if malloc fails, otherwise a freshly malloced string
+ */
+static char	*ft_strjoin(char *s1, const char *s2, size_t s1_len, size_t s2_len)
+{
+	char	*str;
+	size_t	i;
+
+	str = malloc((s1_len + s2_len + 1) * sizeof(char));
+	if (!str)
+	{
+		free(s1);
+		return (NULL);
+	}
+	i = 0;
+	while (i < s1_len)
+	{
+		str[i] = s1[i];
+		++i;
+	}
+	while (*s2)
+		str[i++] = *s2++;
+	str[i] = '\0';
+	if (s1)
+		free(s1);
+	return (str);
+}
 
 /**
  * Checks if left contains a newline. If not, read BUFFER_SIZE bytes
@@ -53,7 +85,7 @@ static char	*ft_read_until_nl(int fd, char *left)
  * If there is no newline, returns left and sets left_p to NULL
  * If there is a newline, allocate a new string and copy everything.
  */
-static char	*ft_ft_get_line(char **left_p, char *left)
+static char	*ft_get_line(char **left_p, char *left)
 {
 	char	*line;
 	char	*newline_i;
@@ -86,7 +118,7 @@ static char	*ft_ft_get_line(char **left_p, char *left)
  * Always frees left
  * If the newline was the last character in the string, return NULL
  */
-static char	*ft_ft_get_left(char *left)
+static char	*ft_get_left(char *left)
 {
 	char	*str;
 	char	*newline_i;
@@ -109,25 +141,32 @@ static char	*ft_ft_get_left(char *left)
 
 char	*get_next_line(int fd)
 {
-	static char	*left = NULL;
-	char		*line;
+	static t_buf_list	*buf_list = NULL;
+	t_buf_list			*cur_lst_list;
+	char				*line;
 
 	if (fd < 0)
 		return (NULL);
-	left = ft_read_until_nl(fd, left);
-	if (!left)
+	cur_lst_list = ft_find_or_create_lst(&buf_list, fd);
+	if (!cur_lst_list)
 		return (NULL);
-	line = ft_ft_get_line(&left, left);
-	if (left != NULL)
-		left = ft_ft_get_left(left);
+	cur_lst_list->left = ft_read_until_nl(fd, cur_lst_list->left);
+	if (cur_lst_list->left != NULL)
+		line = ft_get_line(&cur_lst_list->left, cur_lst_list->left);
+	else
+		line = NULL;
+	if (cur_lst_list->left != NULL)
+		cur_lst_list->left = ft_get_left(cur_lst_list->left);
+	if (cur_lst_list->left == NULL)
+		ft_remove_lst_item(&buf_list, cur_lst_list);
 	return (line);
 }
 
 /*
 int main()
 {
-	int x = open("fichierquinexistepas,txt", O_RDONLY);
-	int y = open("fichierquinexistepas2,txt", O_RDONLY);
+	int x = open("test.txt", O_RDONLY);
+	int y = open("test2.txt", O_RDONLY);
 	char *str;
 
 	printf("%s", (str = get_next_line(x)));

@@ -1,42 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/19 18:02:16 by lsinke            #+#    #+#             */
-/*   Updated: 2022/12/26 11:09:28 by tbournon         ###   ########.fr       */
+/*   Created: 2022/04/19 18:02:16 by tbournon          #+#    #+#             */
+/*   Updated: 2022/12/26 11:29:25 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 42
 # endif
 
 # include <stdlib.h>
 # include <unistd.h>
 
-char	*get_next_line(int fd);
+typedef struct s_buf_list
+{
+	int					fd;
+	char				*left;
+	struct s_buf_list	*next;
+}	t_buf_list;
 
-/**
- * Join s1 and s2, making a copy of s2 if s1 is null. Always free s1.
- *
- * Takes the lengths of s1 and s2 as additional args to improve performance
- *
- * @return NULL if malloc fails, otherwise a freshly malloced string
- */
-char	*ft_strjoin(char *s1, const char *s2, size_t s1_len, size_t s2_len);
+char		*get_next_line(int fd);
+
 /**
  * Null safe version of strlen. Returns 0 if the string is NULL
  */
-size_t	ft_sstrlen(const char *s);
+size_t		ft_sstrlen(const char *s);
 /**
  * Finds a newline character in the string, and returns a pointer to it
  * returns NULL if no newline was found
  */
-char	*ft_find_nl(char *str);
+char		*ft_find_nl(char *str);
+/**
+ * Find a list lstect with the correct fd in the list
+ * create one if not found
+ */
+t_buf_list	*ft_find_or_create_lst(t_buf_list **list, int fd);
+/**
+ * Removes a list item from the list, setting list to NULL if item was first
+ */
+void		ft_remove_lst_item(t_buf_list **list, t_buf_list *item);
 
 #endif
