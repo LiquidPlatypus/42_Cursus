@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 10:00:23 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/27 10:31:53 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/12/27 11:11:40 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 
 # define WIDTH 256
-# define HEIGTH 256
+# define HEIGHT 256
 
 #endif
