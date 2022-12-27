@@ -6,13 +6,11 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 18:02:15 by lsinke            #+#    #+#             */
-/*   Updated: 2022/12/26 14:35:38 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/12/27 09:58:35 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h> // !                                                         
-#include <fcntl.h> // !                                                         
 
 /**
  * Checks if left contains a newline. If not, read BUFFER_SIZE bytes
@@ -122,20 +120,3 @@ char	*get_next_line(int fd)
 		left = ft_ft_get_left(left);
 	return (line);
 }
-
-/*
-int main()
-{
-	int x = open("fichierquinexistepas,txt", O_RDONLY);
-	int y = open("fichierquinexistepas2,txt", O_RDONLY);
-	char *str;
-
-	printf("%s", (str = get_next_line(x)));
-	printf("%s", (str = get_next_line(y)));
-	printf("%s", (str = get_next_line(y)));
-	printf("%s", (str = get_next_line(x)));
-	printf("%s", (str = get_next_line(y)));
-
-	return 0;
-}
-*/

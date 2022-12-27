@@ -6,13 +6,11 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 18:02:15 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/26 14:29:21 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/12/27 09:58:28 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-#include <stdio.h> // !                                                         
-#include <fcntl.h> // !                                                         
 
 /**
  * Join s1 and s2, making a copy of s2 if s1 is null. Always free s1.
@@ -161,20 +159,3 @@ char	*get_next_line(int fd)
 		ft_remove_lst_item(&buf_list, cur_lst_list);
 	return (line);
 }
-
-/*
-int main()
-{
-	int x = open("test.txt", O_RDONLY);
-	int y = open("test2.txt", O_RDONLY);
-	char *str;
-
-	printf("%s", (str = get_next_line(x)));
-	printf("%s", (str = get_next_line(y)));
-	printf("%s", (str = get_next_line(y)));
-	printf("%s", (str = get_next_line(x)));
-	printf("%s", (str = get_next_line(y)));
-
-	return 0;
-}
-*/
