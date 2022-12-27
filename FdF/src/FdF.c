@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 10:00:15 by tbournon          #+#    #+#             */
-/*   Updated: 2022/12/27 10:56:24 by tbournon         ###   ########.fr       */
+/*   Updated: 2022/12/27 11:10:13 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,30 @@
 #include <stdlib.h> // !                                                
 #include <stdio.h> // !                                                 
 #include <unistd.h> // !                                                
-#include <string.h> // !                                                
-#define BPP sizeof(int32_t) // !                                        
 
-static void	ft_error(void)
+void	my_keyhook(mlx_key_data_t keydata, void *param)
 {
-	fprintf(stderr, "%s", mlx_strerror(mlx_errno)); // TODO : REMPLACER PAR MON PROPRE fprintf
-	exit(EXIT_FAILURE);
-}
+	// If we PRESS the 'J' key, printf "Hello".
+	if (keydata.key == MLX_KEY_J && keydata.action == MLX_PRESS)
+		puts("Hello ");
 
-static void	ft_hook(void *param)
-{
-	const mlx_t	*mlx = param;
-	printf("WIDTH: %d | HEIGHT: %d\n", mlx->width, mlx->height); // TODO : REMPLACER PAR MON PROPRE printf
+	// If we RELEASE the 'K' key, print "World".
+	if (keydata.key == MLX_KEY_K && keydata.action == MLX_RELEASE)
+		puts("Wolrd");
+
+	// If we HOLD the 'L' key, print "!".
+	if (keydata.key == MLX_KEY_L && keydata.action == MLX_REPEAT)
+		puts("!");
 }
 
 int	main(void)
 {
-	// MLX allow you tod efine its core behavior before startup.
-	mlx_set_setting(MLX_MAXIMIZED, true);
-	mlx_t	*mlx = mlx_init(WIDTH, HEIGTH, "42", true);
-	if (!mlx)
-		ft_error();
+	mlx_t	*mlx;
 
-	/* Do stuff */
+	if (!(mlx = mlx_init(WIDTH, HEIGTH, "MLX42", true)))
+		return (EXIT_FAILURE);
 
-	// Create and display the image.
-	mlx_image_t	*img = mlx_new_image(mlx, 128, 128);
-	
-	// Set the channels of each pixel in our image to the maximum byte value of 255
-	memset(img->pixels, 255, img->width * img->height * BPP);
-
-	if (!img || (mlx_image_to_window(mlx, img, 0, 0) < 0))
-		ft_error();
-
-	// Register a hook and âss mlx as an optional param.
-	// NOTE: Do this before calling mlx_loop!
-	mlx_loop_hook(mlx, ft_hook, mlx);
+	mlx_key_hook(mlx, &my_keyhook, NULL);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	return (EXIT_SUCCESS);
