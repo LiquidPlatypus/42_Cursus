@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 10:00:23 by tbournon          #+#    #+#             */
-/*   Updated: 2023/01/04 10:53:12 by tbournon         ###   ########.fr       */
+/*   Updated: 2023/01/04 12:58:47 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,17 @@
 
 # include "../MLX42/include/MLX42/MLX42.h"
 
+/*
+- x1 : abscice point de départ
+- y1 : ordonnée point de départ
+- x2 : abscise point d'arrivé
+- y2 : ordonnée point d'arrivé
+- x :
+- y :
+- dx : x2 - x1
+- dy : y2 - y1
+- m : coefficient directeur
+*/
 typedef struct line_params
 {
 	int		x1;
@@ -23,6 +34,9 @@ typedef struct line_params
 	int		y2;
 	int		x;
 	float	y;
+	float	dx;
+	float	dy;
+	float	m;
 }		t_line;
 
 # define WIDTH 1200

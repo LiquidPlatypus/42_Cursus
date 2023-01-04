@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 10:00:15 by tbournon          #+#    #+#             */
-/*   Updated: 2023/01/04 10:54:27 by tbournon         ###   ########.fr       */
+/*   Updated: 2023/01/04 12:59:52 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,20 @@ static void	line(mlx_image_t *img)
 	int		width;
 	int		height;
 
+	line.x1 = 0;
 	line.y1 = 0;
+	line.x2 = 14;
+	line.y2 = 13;
 	line.x = 0;
 	line.y = 0;
+	line.dx = line.x2 - line.x1;
+	line.dy = line.y2 - line.y1;
+	line.m = line.dy / line.dx;
 	width = WIDTH;
 	height = 0;
 	while (line.x < width)
 	{
-		line.y = 0.7 * line.x + line.y1;
+		line.y = m * line.x + line.y1;
 		mlx_put_pixel(img, line.x, line.y, 0xFF000FF);
 		line.x++;
 	}
