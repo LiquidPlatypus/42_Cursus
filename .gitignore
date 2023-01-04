@@ -72,3 +72,5 @@ FdF/test_maps/t1.fdf
 FdF/test_maps/t2.fdf
 FdF/a.out.dSYM/Contents/Info.plist
 FdF/src/FdF.o
+FdF/.vscode/tasks.json
+FdF/.vscode/launch.json
