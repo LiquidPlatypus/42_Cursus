@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 10:00:23 by tbournon          #+#    #+#             */
-/*   Updated: 2023/01/04 12:58:47 by tbournon         ###   ########.fr       */
+/*   Updated: 2023/01/04 15:56:00 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ typedef struct line_params
 	int		y2;
 	int		x;
 	float	y;
-	float	dx;
-	float	dy;
-	float	m;
+	float	dx; // TODO : mettre en valeur absolue et non en float
+	float	dy; // TODO : mettre en valeur absolue et non en float
+	float	m; // TODO : mettre en valeur absolue et non en float
 }		t_line;
 
 # define WIDTH 1200
