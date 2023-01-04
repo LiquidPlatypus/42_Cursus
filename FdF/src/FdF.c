@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 10:00:15 by tbournon          #+#    #+#             */
-/*   Updated: 2023/01/04 09:41:40 by tbournon         ###   ########.fr       */
+/*   Updated: 2023/01/04 10:54:27 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,20 @@ static void	ft_hook(void *param)
 
 static void	line(mlx_image_t *img)
 {
-	int		y1;
-	int		x;
-	float	y;
+	t_line	line;
 	int		width;
 	int		height;
 
-	y1 = 0;
-	x = 0;
-	y = 0;
+	line.y1 = 0;
+	line.x = 0;
+	line.y = 0;
 	width = WIDTH;
 	height = 0;
-	while (x < width)
+	while (line.x < width)
 	{
-		y = 0.7 * x + y1;
-		mlx_put_pixel(img, x, y, 0xFF000FF);
-		x++;
+		line.y = 0.7 * line.x + line.y1;
+		mlx_put_pixel(img, line.x, line.y, 0xFF000FF);
+		line.x++;
 	}
 }
 
@@ -56,7 +54,6 @@ int	main(void)
 	img = mlx_new_image(mlx, WIDTH, HEIGHT);
 	if (!img || (mlx_image_to_window(mlx, img, 0, 0) < 0))
 		return (EXIT_FAILURE);
-	//mlx_put_pixel(img, 128, 128, 0xFF000FF);
 	line(img);
 	mlx_loop_hook(mlx, ft_hook, mlx);
 	mlx_loop(mlx);
