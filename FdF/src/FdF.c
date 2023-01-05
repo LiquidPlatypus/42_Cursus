@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 10:00:15 by tbournon          #+#    #+#             */
-/*   Updated: 2023/01/05 14:52:47 by tbournon         ###   ########.fr       */
+/*   Updated: 2023/01/05 14:54:17 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static void	line(mlx_image_t *img)
 	int		height;
 
 	line.x1 = 0;
-	line.y1 = 0;
-	line.x2 = 1199;
-	line.y2 = 899;
+	line.y1 = 200;
+	line.x2 = 200;
+	line.y2 = 80;
 	line.e = 0;
 	line.x = line.x1;
 	line.y = line.y1;
