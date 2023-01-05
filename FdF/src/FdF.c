@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 10:00:15 by tbournon          #+#    #+#             */
-/*   Updated: 2023/01/05 13:07:32 by tbournon         ###   ########.fr       */
+/*   Updated: 2023/01/05 13:28:05 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int	absolute_value(int nbr)
 
 static void	ft_hook(void *param)
 {
-	const mlx_t	*mlx;
+	mlx_t	*mlx;
 
 	mlx = param;
-	// TODO : A REMPLACER AVEC MON PROPRE PRINTF
-	printf("WIDTH: %d | HEIGHT: %d\n", mlx->width, mlx->height);
+	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(mlx);
 }
 
 static void	line(mlx_image_t *img)
@@ -56,12 +56,6 @@ static void	line(mlx_image_t *img)
 	}
 }
 
-void	input_hook(mlx_key_data_t keydata, void *mlx)
-{
-	if (keydata.key == MLX_KEY_ESCAPE)
-		mlx_close_window(mlx);
-}
-
 int	main(void)
 {
 	mlx_t		*mlx;
@@ -74,8 +68,7 @@ int	main(void)
 	if (!img || (mlx_image_to_window(mlx, img, 0, 0) < 0))
 		return (EXIT_FAILURE);
 	line(img);
-	mlx_loop_hook(mlx, ft_hook, mlx);
-	mlx_key_hook(mlx, &input_hook, NULL);
+	mlx_loop_hook(mlx, &ft_hook, mlx);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	return (EXIT_SUCCESS);
