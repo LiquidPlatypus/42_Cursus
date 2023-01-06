@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 10:00:15 by tbournon          #+#    #+#             */
-/*   Updated: 2023/01/06 09:40:39 by tbournon         ###   ########.fr       */
+/*   Updated: 2023/01/06 11:22:26 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@ int	absolute_value(int nbr)
 	return (nbr);
 }
 
+int	signe(int nbr)
+{
+	if (nbr < 0)
+		return (-1);
+	else if (nbr > 0)
+		return (1);
+	else
+		return (0);
+}
+
 static void	ft_hook(void *param)
 {
 	mlx_t	*mlx;
@@ -34,32 +44,32 @@ static void	ft_hook(void *param)
 static void	line(mlx_image_t *img)
 {
 	t_line	line;
-	int		width;
-	int		height;
+	int		x;
+	float	y;
+	float	error;
+	float	error_inc;
 
-	line.x1 = 0;
-	line.y1 = 0;
-	line.x2 = 500;
-	line.y2 = 300;
-	line.e = 0;
-	line.x = line.x1;
-	line.y = line.y1;
-	line.dx = absolute_value(line.x2) - absolute_value(line.x1);
-	line.dy = absolute_value(line.y2) - absolute_value(line.y1);
-	line.m = line.dy / line.dx;
-	width = WIDTH;
-	height = 0;
-	while (line.x < line.x2)
+	line.x0 = 0;
+	line.y0 = 0;
+	line.x1 = 300;
+	line.y1 = 100;
+	line.dx = line.x1 - line.x0;
+	line.dy = line.y1 - line.y0;
+	line.slope = 2 * line.dy;
+	x = 0;
+	y = line.y0;
+	error = -line.dx;
+	error_inc = -2 * line.dx;
+	while (x <= line.x1)
 	{
-		line.y = line.m * line.x + line.y1 + 0.5;
-		mlx_put_pixel(img, line.x, line.y, 0xFF000FF);
-		line.e -= line.m;
-		if (line.e < 0.0)
+		mlx_put_pixel(img, x, y, 0xFF000FF);
+		error += line.slope;
+		if (error >= 0.0)
 		{
-			line.y--;
-			line.e += -2 * line.dx;
+			y++;
+			error += error_inc;
 		}
-		line.x++;
+		++x;
 	}
 }
 
