@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 10:00:23 by tbournon          #+#    #+#             */
-/*   Updated: 2023/01/06 11:16:53 by tbournon         ###   ########.fr       */
+/*   Updated: 2023/01/06 13:04:56 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct line_params
 	float	slope;
 	int		dx;
 	int		dy;
+	int		inc_x;
+	int		inc_y;
 }		t_line;
 
 # define WIDTH 1200
