@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 10:00:15 by tbournon          #+#    #+#             */
-/*   Updated: 2023/01/06 14:50:17 by tbournon         ###   ########.fr       */
+/*   Updated: 2023/01/09 12:32:54 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	ft_hook(void *param)
 {
 	mlx_t	*mlx;
 
-	mlx = param;
+	mlx = (mlx_t *)param;
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
 }
