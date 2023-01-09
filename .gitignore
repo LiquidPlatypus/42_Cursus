@@ -74,3 +74,4 @@ FdF/a.out.dSYM/Contents/Info.plist
 FdF/src/FdF.o
 FdF/.vscode/tasks.json
 FdF/.vscode/launch.json
+*.o
