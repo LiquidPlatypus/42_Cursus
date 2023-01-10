@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 13:57:24 by tbournon          #+#    #+#             */
-/*   Updated: 2023/01/06 15:15:09 by tbournon         ###   ########.fr       */
+/*   Updated: 2023/01/10 15:12:11 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	more_ver_than_hor(mlx_image_t *img, int x, int y, t_line line)
 
 	error = -line.dx;
 	error_inc = -2 * line.dx;
-	while (x != line.y1 + line.inc_y)
+	while (y != line.y1 + line.inc_y)
 	{
 		mlx_put_pixel(img, x, y, 0xFF00FF);
 		error += line.slope;
