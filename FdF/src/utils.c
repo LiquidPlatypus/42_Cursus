@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 11:10:54 by tbournon          #+#    #+#             */
-/*   Updated: 2023/01/10 16:05:12 by tbournon         ###   ########.fr       */
+/*   Updated: 2023/01/10 16:09:38 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	line_hook(void *param)
 {
 	t_line	*line;
 
-	line = (t_line*)param;
+	line = (t_line *)param;
 }
 
 t_line	initializer(void)
