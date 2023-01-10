@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 10:00:23 by tbournon          #+#    #+#             */
-/*   Updated: 2023/01/06 14:51:05 by tbournon         ###   ########.fr       */
+/*   Updated: 2023/01/10 09:31:33 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FDF_H
 
 # include "../MLX42/include/MLX42/MLX42.h"
+# include <math.h>
 
 typedef struct line_params
 {
