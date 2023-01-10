@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 11:10:54 by tbournon          #+#    #+#             */
-/*   Updated: 2023/01/10 15:12:49 by tbournon         ###   ########.fr       */
+/*   Updated: 2023/01/10 16:05:12 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ int	signe(int nbr)
 		return (1);
 	else
 		return (0);
+}
+
+void	line_hook(void *param)
+{
+	t_line	*line;
+
+	line = (t_line*)param;
 }
 
 t_line	initializer(void)
