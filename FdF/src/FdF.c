@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 10:00:15 by tbournon          #+#    #+#             */
-/*   Updated: 2023/01/10 15:24:46 by tbournon         ###   ########.fr       */
+/*   Updated: 2023/01/10 16:09:26 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ static void	line(mlx_image_t *img)
 	y = line.y0;
 	error = -line.dx;
 	error_inc = -2 * line.dx;
-	if (line.dy == 0)	// horizontal line
+	if (line.dy == 0)
 		horizontal_line(img, x, y, line);
-	else if (line.dx == 0)	// vertical line
+	else if (line.dx == 0)
 		vertical_line(img, x, y, line);
-	else if (line.dx >= line.dy)	// more horizontal than vertical
+	else if (line.dx >= line.dy)
 		more_hor_than_ver(img, x, y, line);
-	else	// more vertical than horizontal
+	else
 		more_ver_than_hor(img, x, y, line);
 }
 
