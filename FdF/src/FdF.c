@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 10:00:15 by tbournon          #+#    #+#             */
-/*   Updated: 2023/01/10 15:06:04 by tbournon         ###   ########.fr       */
+/*   Updated: 2023/01/10 15:24:46 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdio.h> // !                                                 
 #include <unistd.h> // !                                                
 
-static void	ft_hook(void *param)
+static void	ft_escape_hook(void *param)
 {
 	mlx_t	*mlx;
 
@@ -59,7 +59,7 @@ int	main(void)
 	if (!img || (mlx_image_to_window(mlx, img, 0, 0) < 0))
 		return (EXIT_FAILURE);
 	line(img);
-	mlx_loop_hook(mlx, &ft_hook, mlx);
+	mlx_loop_hook(mlx, &ft_escape_hook, mlx);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	return (EXIT_SUCCESS);
