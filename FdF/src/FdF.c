@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 10:00:15 by tbournon          #+#    #+#             */
-/*   Updated: 2023/01/11 10:38:31 by tbournon         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:10:24 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	ft_escape_hook(void *param)
 		mlx_close_window(mlx);
 }
 
-static void	line(mlx_image_t *img)
+static void	line(mlx_t *mlx, mlx_image_t *img)
 {
 	t_line	line;
 	int		x;
@@ -32,7 +32,7 @@ static void	line(mlx_image_t *img)
 	int		error;
 	int		error_inc;
 
-	line = initializer();
+	line = initializer(mlx);
 	x = line.x0;
 	y = line.y0;
 	error = -line.dx;
@@ -58,9 +58,8 @@ int	main(void)
 	img = mlx_new_image(mlx, WIDTH, HEIGHT);
 	if (!img || (mlx_image_to_window(mlx, img, 0, 0) < 0))
 		return (EXIT_FAILURE);
-	line(img);
+	line(mlx, img);
 	mlx_loop_hook(mlx, &ft_escape_hook, mlx);
-	mlx_loop_hook(mlx, &line_hook, mlx);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	return (EXIT_SUCCESS);
