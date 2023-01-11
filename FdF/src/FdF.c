@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 10:00:15 by tbournon          #+#    #+#             */
-/*   Updated: 2023/01/10 16:09:26 by tbournon         ###   ########.fr       */
+/*   Updated: 2023/01/11 10:38:31 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	main(void)
 		return (EXIT_FAILURE);
 	line(img);
 	mlx_loop_hook(mlx, &ft_escape_hook, mlx);
+	mlx_loop_hook(mlx, &line_hook, mlx);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	return (EXIT_SUCCESS);
