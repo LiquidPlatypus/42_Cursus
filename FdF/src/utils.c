@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 11:10:54 by tbournon          #+#    #+#             */
-/*   Updated: 2023/01/11 10:32:31 by tbournon         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:00:10 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,21 @@ int	signe(int nbr)
 		return (0);
 }
 
-void	line_hook(t_line line, void *param)
+t_line	line_hook(t_line line, void *param)
 {
 	mlx_t	*mlx;
 
 	mlx = (mlx_t *)param;
-	if (mlx_is_key_down(mlx, MLX_KEY_))
+	if (mlx_is_key_down(mlx, MLX_MOUSE_BUTTON_LEFT))
+	{
+		mlx_get_mouse_pos(mlx, line.x0, line.y0);
+		return (line);
+	}
+	if (mlx_is_key_down(mlx, MLX_MOUSE_BUTTON_RIGHT))
+	{
+		mlx_get_mouse_pos(mlx, line.x1, line.y1);
+		return (line);
+	}
 }
 
 t_line	initializer(void)
