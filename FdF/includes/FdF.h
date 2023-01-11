@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 10:00:23 by tbournon          #+#    #+#             */
-/*   Updated: 2023/01/10 15:05:23 by tbournon         ###   ########.fr       */
+/*   Updated: 2023/01/11 10:38:21 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	more_ver_than_hor(mlx_image_t *img, int x, int y, t_line line);
 // utils.c
 int		absolute_value(int nbr);
 int		signe(int nbr);
+void	line_hook(t_line line, void *param);
 t_line	initializer(void);
 
 # define WIDTH 1200
