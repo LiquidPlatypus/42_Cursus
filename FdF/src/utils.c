@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 11:10:54 by tbournon          #+#    #+#             */
-/*   Updated: 2023/01/11 16:18:46 by tbournon         ###   ########.fr       */
+/*   Updated: 2023/01/12 13:18:15 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,3 +50,6 @@ t_line	initializer(mlx_t *mlx)
 mlx_mousefunc()
 
 void	*fdf_mouse_pos()
+{
+
+}

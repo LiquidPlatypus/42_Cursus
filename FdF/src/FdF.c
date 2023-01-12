@@ -6,7 +6,7 @@
 /*   By: tbournon <tbournon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 10:00:15 by tbournon          #+#    #+#             */
-/*   Updated: 2023/01/11 16:19:44 by tbournon         ###   ########.fr       */
+/*   Updated: 2023/01/12 13:58:59 by tbournon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdio.h> // !                                                 
 #include <unistd.h> // !                                                
 
-static void	ft_escape_hook(void *param)
+static void	ft_hook(void *param)
 {
 	mlx_t	*mlx;
 
